@@ -1,0 +1,101 @@
+/*************************/
+/* MAIN */
+/*************************/
+
+
+body{
+
+    @apply 
+        w-screen
+        h-screen
+        flex
+        flex-col
+        bg-[#121212]
+        text-slate-100
+        font-light
+    ;
+
+}
+
+
+
+
+/*************************/
+/* MAIN */
+/*************************/
+    
+
+main{
+
+    @apply 
+        my-[5.3rem]
+        grow
+    ;
+
+}
+
+
+
+/*************************/
+/* CONTAINER */
+/*************************/
+
+
+.container{
+
+    @apply 
+        mx-auto
+        px-4
+        md:px-0
+        w-1/2
+    ;
+
+}
+
+
+.container-sm{
+    
+    @apply 
+        md:w-2/3
+        xl:w-2/5
+    ;    
+
+}
+
+
+
+
+/*************************/
+/* BLACKOUT */
+/*************************/
+
+
+#blackout{
+
+    @apply
+        fixed
+        left-0
+        top-0
+        w-screen
+        h-screen
+        bg-gray-900/60
+        z-10
+    ;
+
+}
+
+
+
+
+
+/* BORDER */
+
+@utility border-light{
+
+    @apply
+        border-slate-300
+    ;
+}
+
+
+

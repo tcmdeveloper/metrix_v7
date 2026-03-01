@@ -1,0 +1,1 @@
+<div id="blackout" class="hidden"></div>

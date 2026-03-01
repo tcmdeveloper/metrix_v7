@@ -1,0 +1,222 @@
+/*************************/
+/* BODY */
+/*************************/
+
+
+body{
+    @apply 
+        font-roboto-slab
+    ;
+}
+
+
+
+
+/*************************/
+/* HEADINGS */
+/*************************/
+
+
+h1{
+    @apply
+        py-3
+        text-5xl
+        text-center
+        font-black
+        font-roboto-slab
+    ;
+
+}
+
+
+h2{
+
+    @apply 
+        py-3
+        text-3xl
+        text-center
+        font-thin
+    ;
+
+}
+
+
+h3{
+
+    @apply 
+        mb-8
+        text-2xl
+        font-bold
+        font-roboto-slab
+        leading-8
+        tracking-tight
+    ;
+
+}
+
+
+
+
+/*************************/
+/* TEXT ELEMENTS */
+/*************************/
+
+
+p{
+
+    @apply 
+        mb-5
+        text-lg
+        leading-relaxed
+        tracking-wide
+    ;
+
+}
+
+
+a{
+
+    @apply
+        hover:text-yellow-500
+    ;
+
+}
+
+
+
+
+/*************************/
+/* FONT AWESOME CLASSES */
+/*************************/
+
+
+
+@utility fa-solid{
+
+    @reference 
+        fa-solid
+    ;
+
+}
+
+
+@utility fa-times{
+
+    @reference 
+        fa-times
+    ;
+
+}
+
+
+
+
+/*************************/
+/* ANIMATIONS */
+/*************************/
+
+
+@utility hover-dip{
+
+    @apply 
+        animation-300
+        hover:translate-y-1
+    ;
+
+}
+
+
+@utility hover-red{
+
+    @apply 
+        animation-300
+        hover:text-red-500
+    ;
+
+}
+
+
+.terms-text{
+
+    @apply 
+        mx-auto
+        w-3/4
+    ;
+
+    .section{
+        @apply 
+            mb-10
+            px-8
+            py-6
+            border
+            border-gray-200
+            rounded-xl
+            shadow
+        ;                  
+    
+        h2{
+            @apply
+                mt-2
+                mb-4
+                font-bold
+            ;
+        }
+
+        h3{
+            @apply 
+                mt-11
+                mb-6
+                text-2xl
+                text-center
+                font-thin
+                font-poppins
+                leading-7
+            ;
+        }
+
+
+        h3.first{
+            @apply 
+                mt-4
+            ;
+        }
+
+        p{
+            @apply
+                text-base
+                font-light
+            ;
+        }
+
+        a{
+            @apply
+                underline
+                underline-offset-2
+                hover-dip
+                hover-red
+                hover:no-underline
+                inline-block
+            ;
+        }
+
+        ul{
+            @apply 
+                mb-8
+                ml-8
+                font-light
+                list-disc
+            ;
+
+            li{
+                @apply
+                    py-1
+                ;
+            }
+        }
+
+    
+    
+    }
+    
+
+}

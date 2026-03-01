@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c514d8f7b9fc5970bdd94287905ef584",
+    "content-hash": "f6ef0b011c98ca9af474a1132e8c72a6",
     "packages": [
         {
             "name": "brick/math",
@@ -65,6 +65,85 @@
                 }
             ],
             "time": "2026-02-07T10:57:35+00:00"
+        },
+        {
+            "name": "butschster/meta-tags",
+            "version": "v3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/butschster/LaravelMetaTags.git",
+                "reference": "d55a889835b2ae50e6d7b6359932701820260a26"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/butschster/LaravelMetaTags/zipball/d55a889835b2ae50e6d7b6359932701820260a26",
+                "reference": "d55a889835b2ae50e6d7b6359932701820260a26",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/config": "^9.0|^10.0|^11.0|^12.0|^13.0",
+                "illuminate/console": "^9.0|^10.0|^11.0|^12.0|^13.0",
+                "illuminate/contracts": "^9.0|^10.0|^11.0|^12.0|^13.0",
+                "illuminate/support": "^9.0|^10.0|^11.0|^12.0|^13.0",
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^9.3|^10.5",
+                "vimeo/psalm": "^5.15|^6.6"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Meta": "Butschster\\Head\\Facades\\Meta",
+                        "PackageManager": "Butschster\\Head\\Facades\\PackageManager"
+                    },
+                    "providers": [
+                        "Butschster\\Head\\Providers\\MetaTagsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Butschster\\Head\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pavel Buchnev",
+                    "email": "butschster@gmail.com"
+                }
+            ],
+            "description": "The most powerful and extendable tools for managing SEO Meta Tags in your Laravel project",
+            "keywords": [
+                "laravel5",
+                "lumen",
+                "metatags",
+                "opengraph",
+                "seo",
+                "webmaster"
+            ],
+            "support": {
+                "issues": "https://github.com/butschster/LaravelMetaTags/issues",
+                "source": "https://github.com/butschster/LaravelMetaTags/tree/v3.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/laravelmetatags",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://www.patreon.com/butschster",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2026-02-22T21:00:49+00:00"
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -1053,6 +1132,82 @@
             "time": "2025-08-22T14:27:06+00:00"
         },
         {
+            "name": "itsgoingd/clockwork",
+            "version": "v5.3.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itsgoingd/clockwork.git",
+                "reference": "d928483e231f042dbff9258795cb17aadaebc7d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itsgoingd/clockwork/zipball/d928483e231f042dbff9258795cb17aadaebc7d0",
+                "reference": "d928483e231f042dbff9258795cb17aadaebc7d0",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=7.1"
+            },
+            "suggest": {
+                "ext-pdo": "Needed in order to use a SQL database for metadata storage",
+                "ext-pdo_mysql": "Needed in order to use MySQL for metadata storage",
+                "ext-pdo_postgres": "Needed in order to use Postgres for metadata storage",
+                "ext-pdo_sqlite": "Needed in order to use a SQLite for metadata storage",
+                "ext-redis": "Needed in order to use Redis for metadata storage",
+                "php-http/discovery": "Vanilla integration - required for the middleware zero-configuration setup"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Clockwork": "Clockwork\\Support\\Laravel\\Facade"
+                    },
+                    "providers": [
+                        "Clockwork\\Support\\Laravel\\ClockworkServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Clockwork\\": "Clockwork/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "itsgoingd",
+                    "email": "itsgoingd@luzer.sk",
+                    "homepage": "https://twitter.com/itsgoingd"
+                }
+            ],
+            "description": "php dev tools in your browser",
+            "homepage": "https://underground.works/clockwork",
+            "keywords": [
+                "Devtools",
+                "debugging",
+                "laravel",
+                "logging",
+                "lumen",
+                "profiling",
+                "slim"
+            ],
+            "support": {
+                "issues": "https://github.com/itsgoingd/clockwork/issues",
+                "source": "https://github.com/itsgoingd/clockwork/tree/v5.3.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/itsgoingd",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-09-14T15:34:49+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v12.50.0",
             "source": {
@@ -1332,6 +1487,69 @@
                 "source": "https://github.com/laravel/prompts/tree/v0.3.12"
             },
             "time": "2026-02-03T06:57:26+00:00"
+        },
+        {
+            "name": "laravel/sanctum",
+            "version": "v4.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/sanctum.git",
+                "reference": "e3b85d6e36ad00e5db2d1dcc27c81ffdf15cbf76"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/e3b85d6e36ad00e5db2d1dcc27c81ffdf15cbf76",
+                "reference": "e3b85d6e36ad00e5db2d1dcc27c81ffdf15cbf76",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/console": "^11.0|^12.0|^13.0",
+                "illuminate/contracts": "^11.0|^12.0|^13.0",
+                "illuminate/database": "^11.0|^12.0|^13.0",
+                "illuminate/support": "^11.0|^12.0|^13.0",
+                "php": "^8.2",
+                "symfony/console": "^7.0|^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.6",
+                "orchestra/testbench": "^9.15|^10.8|^11.0",
+                "phpstan/phpstan": "^1.10"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Sanctum\\SanctumServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Sanctum\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel Sanctum provides a featherweight authentication system for SPAs and simple APIs.",
+            "keywords": [
+                "auth",
+                "laravel",
+                "sanctum"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/sanctum/issues",
+                "source": "https://github.com/laravel/sanctum"
+            },
+            "time": "2026-02-07T17:19:31+00:00"
         },
         {
             "name": "laravel/serializable-closure",

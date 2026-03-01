@@ -1,0 +1,398 @@
+/*************************/
+/* BUTTONS */
+/*************************/
+
+
+.btn{
+
+    @apply inline-block;
+    @apply px-6;
+    @apply py-1;
+    @apply w-fit;
+    @apply cursor-pointer;
+
+    @apply bg-black;
+    @apply border;
+    @apply border-stone-700;
+    @apply rounded;
+    @apply shadow-sm;
+
+    @apply text-white;
+    @apply font-bold;
+    @apply no-underline;
+    
+    @apply animation-300;
+
+    @apply hover:translate-y-0.5;
+    
+}
+
+
+
+
+/*************************/
+/* ALERTS */
+/*************************/
+
+
+@utility alert{
+
+    @apply mx-auto;
+    @apply mb-12;
+    @apply px-5;
+    @apply py-2;
+    @apply w-fit;
+    
+    @apply border;
+    @apply border-l-8;
+    @apply border-gray-300;
+    @apply shadow;
+    
+    @apply font-light;
+    @apply text-center;
+    
+
+    i{
+        @apply mr-2;
+    }
+
+
+}
+
+
+.alert-primary{
+
+    @apply alert;
+
+    @apply bg-indigo-50;
+    @apply border-l-indigo-600;
+    @apply text-indigo-900;
+
+}
+
+
+.alert-secondary{
+
+    @apply alert;
+
+    @apply bg-stone-50;
+    @apply border-l-stone-600;
+    @apply text-stone-900;
+
+}
+
+
+.alert-success{
+
+    @apply alert;
+
+    @apply bg-green-50;
+    @apply border-l-green-800;
+    @apply text-green-900;
+
+}
+
+
+.alert-danger{
+
+    @apply alert;
+
+    @apply bg-red-50;
+    @apply border-l-red-600;
+    @apply text-red-900;
+
+}
+
+
+.alert-warning{
+
+    @apply alert;
+
+    @apply bg-yellow-50;
+    @apply border-l-yellow-600;
+    @apply text-yellow-900;
+
+}
+
+
+.alert-info{
+
+    @apply alert;
+
+    @apply bg-sky-50;
+    @apply border-l-sky-600;
+    @apply text-sky-900;
+
+}
+
+
+.alert-action{
+
+    @apply alert;
+
+    @apply bg-purple-50;
+    @apply border-l-purple-600;
+    @apply text-purple-900;
+
+}
+
+
+
+
+/*************************/
+/* FORM ELEMENTS */
+/*************************/
+
+
+#formInputImage{
+    @apply w-full;
+    @apply text-center;
+}
+
+
+#formInputImage>#selectedImageFrame{
+    @apply w-full;
+    @apply h-fit;
+    @apply p-4;
+    @apply mx-auto;
+    @apply my-3;
+    @apply bg-white;
+    @apply border;
+    @apply border-slate-300;
+    @apply text-lg;
+    @apply font-bold;
+}
+
+
+#formInputImage>#selectedImageFrame>img{
+    @apply w-1/3;
+    @apply mx-auto;
+    @apply shadow;
+}
+
+
+#formInputImage>#uploadButton{
+    /* @apply btn-action; */
+    @apply mx-auto;
+    @apply px-16;
+}
+
+#formInputImage>#imageInput{
+    @apply opacity-0;
+    @apply w-0;
+    @apply h-0;
+}
+
+
+
+
+/*************************/
+/* BREADCRUMBS */
+/*************************/
+
+
+.breadcrumbs{
+
+    @apply mx-auto;
+    @apply mt-12;
+    @apply pt-1;
+    @apply w-fit;
+
+    @apply text-sm;
+    @apply uppercase;
+    @apply tracking-tight;
+
+
+    ul{
+
+        @apply flex;
+        @apply gap-6;
+
+    }   
+
+
+}
+
+
+
+
+/*************************/
+/* CATEGORY PIP */
+/*************************/
+
+
+a.category-pip{
+
+    @apply inline-block;
+    @apply px-2;
+    @apply py-1;
+
+    @apply rounded;
+    @apply shadow-sm;
+
+    @apply text-xs;
+    @apply text-white;
+    @apply font-bold;
+    @apply uppercase;
+    @apply no-underline;
+
+    @apply hover-dip;
+
+}
+
+a.category-pip-sm{
+
+    @apply inline-block;
+    @apply px-1;
+    @apply py-0;
+
+    @apply rounded;
+    @apply shadow-sm;
+
+    @apply text-[0.6rem];
+    @apply text-white;
+    @apply font-medium;
+    @apply uppercase;
+    @apply no-underline;
+
+    @apply hover-dip;
+
+}
+
+
+
+
+/*************************/
+/* RESOURCE PUBLISHING INFORMATION */
+/*************************/
+
+
+ul.resource-publishing-information{
+   
+    @apply flex;
+    @apply flex-row;
+    @apply gap-2;
+    @apply justify-center;
+    @apply items-center;
+    
+    @apply text-xs;
+    
+}
+
+
+
+
+/*************************/
+/* RESOURCE PUBLISHING INFORMATION */
+/*************************/
+
+
+.conent-image-lg{
+
+    @apply mb-4;
+    
+
+    >.image-frame{
+
+        @apply mb-6;
+        @apply p-1;
+
+        @apply bg-gradient-to-tl;
+        @apply from-cyan-100;
+        @apply to-lime-100;
+        @apply border;
+        @apply border-slate-300;
+        @apply rounded;
+
+
+        >img{
+            @apply w-full;
+        }
+
+    }
+    
+}
+
+
+
+
+/* Pagination buttons */
+
+.pagination-btn{
+    @apply flex;
+    @apply items-center;
+    @apply py-1;
+    @apply px-3;
+    @apply text-base;
+    @apply font-medium;
+    @apply text-gray-500;
+    @apply bg-white;
+    @apply border;
+    @apply border-slate-300;
+    @apply cursor-pointer;
+}
+
+.pagination-btn.start{
+    @apply rounded-l-lg;
+}
+
+.pagination-btn.end{
+    @apply rounded-r-lg;
+}
+
+.pagination-btn.inactive{
+    @apply text-gray-400;
+    @apply cursor-default;
+}
+
+.pagination-btn.current{
+    @apply bg-white;
+    @apply text-sky-600;
+    @apply cursor-default;
+}
+
+
+
+
+/*************************/
+/* TOAST */
+/*************************/
+
+
+.toast-box{
+
+    @apply fixed;
+    @apply p-8;
+    @apply left-1/2;
+    @apply -translate-x-1/2;
+    
+    @apply bg-yellow-400;
+    @apply border-2;
+    @apply border-gray-900;
+    @apply rounded-sm;
+    @apply shadow-md;
+
+    @apply z-50;
+
+    @apply animation-300;
+
+}
+
+
+.toast-text{
+
+    @apply mx-3;
+
+    @apply text-3xl;
+    @apply text-center;
+    @apply font-black;
+    @apply capitalize;
+
+}
+
+
+
+
+
+
+

@@ -1,0 +1,147 @@
+/*************************/
+/* FOOTER */
+/*************************/
+
+footer{
+
+    @apply 
+        py-10
+        bg-[#434343]
+        text-white
+    ;
+
+
+    ul.stack{
+
+        @apply
+            flex
+            flex-col
+            justify-center
+            items-center
+            text-center
+        ;
+    
+
+        >li:first-child{
+
+            @apply 
+                my-10
+                text-3xl
+                text-center
+                font-black
+                font-roboto-slab
+                animation-300
+                hover:translate-y-1
+            ;
+
+            
+        }
+
+
+        >li.socials{
+
+            @apply 
+                mb-10
+                py-2
+                flex
+                items-center
+                gap-5
+            ;
+            
+            
+            a{
+                @apply 
+                    animation-300
+                    hover:scale-110
+                    hover:-translate-y-0.5
+                    hover:text-yellow-400
+                ;
+            }
+
+
+            span{
+                @apply 
+                    text-xs
+                    text-gray-400
+                    font-bold
+                    uppercase
+                    tracking-tighter
+                ;
+            }
+
+
+        }
+
+
+        li.copyright{
+
+            @apply
+                text-xs
+                text-gray-200
+                font-normal
+                font-roboto
+                tracking-normal
+            ;
+                
+
+            a{
+                @apply
+                    text-yellow-300
+                    underline
+                    underline-offset-2
+                    hover:text-white
+                    hover:no-underline
+                ;
+            }
+
+
+        }
+
+
+    }
+
+
+    ul.menu{
+
+        @apply mb-10
+            px-5
+            py-5
+
+            flex
+            flex-col
+            md:flex-row
+            items-center
+            gap-12
+
+            border-t
+            border-b
+            border-gray-800
+
+            text-xs
+            font-bold
+            uppercase
+            tracking-tighter
+        ;
+
+        
+        li{
+            
+            a{
+
+                @apply 
+                    block
+
+                    animation-300
+
+                    hover:scale-110
+                    hover:-translate-y-0.5
+                    hover:text-yellow-400
+                ;
+
+            }
+
+        }
+
+    }
+
+}

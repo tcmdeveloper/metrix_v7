@@ -1,0 +1,234 @@
+/*************************/
+/* NAVBAR */
+/*************************/
+
+#navBar{
+
+    @apply
+        fixed
+        left-0
+        top-0
+        w-screen
+        h-[85px]
+        p-6
+        flex
+        items-center
+        bg-[#1c1c1e]
+        border-b
+        border-light
+        shadow-sm
+        text-center
+        text-white
+        font-black
+        font-lemon-milk
+        capitalize
+        z-40
+        text-2xl
+        md:text-3xl
+    ;
+
+    ul{
+
+        @apply
+            w-full
+            h-full
+            flex
+            items-center
+        ;
+
+        li{
+
+            @apply 
+                w-[12.5%]
+                text-start
+            ;
+
+            a{
+                @apply
+                    inline-block
+                    no-underline
+                    transition-all
+                    duration-150
+                    ease-in
+                    
+                ;
+            }
+        }
+
+        li:nth-child(2){   
+            @apply 
+                w-3/4
+                text-center
+            ;
+        }
+
+        li:nth-child(3){
+            @apply
+                text-end
+            ;
+        }
+
+    }
+
+}
+
+
+
+
+/*************************/
+/* SLIDE MENU */
+/*************************/
+
+
+#slideMenu{
+
+    @apply
+        fixed
+        top-0
+        w-full
+        h-screen
+        flex
+        flex-col
+        justify-center
+        bg-gradient-to-t
+        from-[#1a1a1a]
+        to-[#1c1c1e]
+        border-r
+        shadow-sm
+        text-5xl
+        sm:text-6xl
+        font-roboto-slab
+        font-black
+        z-[60]
+        transition-all
+        duration-300
+        ease-in
+    ;
+
+    ul{
+        @apply 
+            py-56
+            flex
+            flex-col
+            items-center
+            gap-3
+        ;
+
+        li>a,
+        li>form>a{
+            @apply 
+                block
+                px-2.5
+                py-1
+
+                rounded
+
+                no-underline
+
+                transition-all
+                duration-150
+                ease-in
+
+                hover:translate-y-2
+                hover:text-yellow-400
+                /* hover:bg-[#1a1a1a] */
+
+                focus:text-yellow-400
+                /* focus:bg-slate-800 */
+                focus:outline-none
+            ;
+
+        }
+
+    }
+
+    #closeSlideMenuIconLink{
+
+    }
+
+
+    #closeSlideMenuIcon{
+
+        @apply 
+            absolute
+            top-0
+            right-0
+            w-12
+            mr-4
+            mt-4
+            mb-20
+            aspect-square
+            flex
+            justify-center
+            items-center
+            text-4xl
+            text-black
+            rounded-full
+            transition-all
+            duration-150
+            ease-in
+            hover:rotate-90
+            hover:scale-110
+            focus:text-yellow-400
+            focus:bg-slate-800
+            focus:outline-none
+        ;
+
+    }
+
+    #closeSlideMenuIcon>i{
+        
+    }
+
+}
+
+
+
+
+/*************************/
+/* SEARCH BAR */
+/*************************/
+
+
+#navSearchBar{
+
+    @apply 
+        absolute
+        top-20
+        w-screen
+        mt-[5px]
+        z-[35]
+        transition-all
+        duration-150
+        ease-in
+    ;
+
+
+    input#navSearchInput::placeholder {
+        @apply 
+            text-2xl
+            text-slate-400
+            font-roboto
+            font-thin
+            tracking-tight
+        ;
+    }
+
+    input#navSearchInput {
+        @apply 
+            block
+            w-screen
+            py-5
+            bg-slate-50
+            shadow-none
+            outline-none
+            text-2xl
+            text-center
+            text-slate-600
+            font-roboto
+            font-medium
+        ;
+
+    }
+
+}

@@ -1,0 +1,68 @@
+@utility resource-grid{
+
+    @apply pt-6;
+    @apply w-full;
+    
+    @apply grid; 
+    @apply gap-6;
+
+    @apply border-t;
+
+}
+
+
+.grid-4-cols{
+    
+    @apply resource-grid;    
+    @apply sm:grid-cols-1;
+    @apply md:grid-cols-2;
+    @apply lg:grid-cols-2;
+    @apply xl:grid-cols-4;
+    
+}
+
+
+
+.grid-2-cols{
+    
+    @apply resource-grid;  
+    @apply sm:grid-cols-1 ;
+    @apply 2xl:grid-cols-2;
+
+}
+
+
+.grid-1-cols{
+    
+    @apply resource-grid;  
+    @apply grid-cols-1;
+
+}
+
+.resources-list{
+    @apply mb-20;
+    @apply flex;
+    @apply flex-col;
+    @apply gap-5;
+
+    >li{
+        @apply w-full;
+    
+
+    }
+
+}
+
+
+.resources-list-sm{
+    @apply flex;
+    @apply flex-col;
+    @apply gap-2;
+
+    >li{
+        @apply w-full;
+    
+
+    }
+
+}

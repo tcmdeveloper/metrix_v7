@@ -1,0 +1,563 @@
+.page-headings-card{
+
+    @apply py-8;
+
+}
+
+
+
+
+.form-card{
+
+    @apply mx-auto;
+    @apply p-10;
+
+
+
+    @apply rounded;
+    @apply shadow-sm;
+
+
+    form{
+
+        @apply grid;
+        @apply grid-cols-2;
+        @apply gap-3;
+
+
+        .form-field,
+        .form-buttons{
+
+            @apply 
+                col-span-2
+                mb-6
+                w-full
+                flex
+                flex-col
+                gap-3
+            ;
+
+        }
+
+
+        .form-buttons{
+
+            @apply my-2;
+            @apply flex-row;
+            @apply justify-center;
+            @apply items-center;
+
+        }
+
+
+        label{
+
+            @apply text-sm;
+            @apply text-slate-400;
+            @apply uppercase;
+
+        }
+
+
+        input[type=text],
+        input[type=email],
+        input[type=password],
+        textarea,
+        select{
+
+            @apply 
+                p-2
+                px-4
+
+                border
+                border-stone-700
+                outline-slate-400
+
+                text-lg
+                text-slate-500
+
+                bg-stone-900
+
+            ;
+
+        }
+
+
+        input::placeholder,
+        textarea::placeholder,
+        select:not(:valid){
+
+            @apply text-slate-300;
+
+        }
+
+
+        span.form-error{
+
+            @apply block;
+
+            @apply text-xs;
+            @apply text-red-500;
+            @apply font-bold;
+            @apply font-roboto;            
+
+        }
+
+
+    }
+
+
+}
+
+
+
+
+.form-card-sm{
+
+    @apply w-1/3;
+
+}
+
+.form-card-md{
+
+    @apply w-1/2;
+
+}
+
+.form-card-lg{
+
+    @apply w-3/4;
+
+}
+
+.sidebar{
+    .form-card{
+        @apply p-5;
+
+        input[type=text],
+        input[type=email],
+        input[type=password],
+        textarea,
+        select{
+
+            @apply p-1.5;
+            @apply px-2.5;
+            @apply text-base;
+
+        }
+
+
+        .form-field,
+        .form-buttons{
+
+            @apply mb-3;
+
+        }
+
+
+        label{
+
+            @apply text-xs;
+
+        }
+
+    }
+}
+
+
+
+
+.content-image-text-overlay{
+
+    @apply bg-cover;
+    @apply bg-no-repeat;
+    
+
+    
+    >div{
+
+        @apply px-3;
+        @apply py-8;
+        @apply w-full;
+        @apply h-96;
+
+        @apply flex;
+        @apply flex-col;
+        @apply gap-4;        
+        @apply justify-end;
+        @apply items-center;
+        
+        @apply bg-gradient-to-t;
+        @apply from-black;
+        @apply to-transparent;
+        @apply via-transparent;
+
+        @apply shadow-lg;
+
+        @apply text-white;
+
+
+        a.category-pip{
+    
+            @apply text-base;
+            @apply md:text-xs;
+
+        }
+
+
+
+        a.content-heading{
+            @apply text-center;
+            @apply text-4xl;
+            @apply md:text-xl;
+            @apply font-bold;
+
+            @apply hover-dip;
+        }
+
+        ul.resource-publishing-information{
+       
+            @apply text-base;
+            @apply md:text-xs;
+    
+        }
+
+        
+    }
+
+}
+
+
+
+
+/*************************/
+/* RESOURCE PUBLISHING INFORMATION */
+/*************************/
+
+
+@utility list-heading{
+
+    @apply mb-12;
+    @apply w-full;
+
+    @apply flex;
+    @apply gap-6;
+    @apply justify-between;
+    @apply items-center;
+    
+    @apply text-4xl;
+    @apply font-roboto;
+    @apply uppercase;
+
+    
+    span:first-child,
+    span:last-child{
+
+        @apply w-full;
+
+    }
+
+
+    span:first-child>span,
+    span:last-child>span{
+
+        @apply block;
+        @apply w-full;
+        @apply h-[1px];
+
+        @apply bg-black;
+        
+    }
+
+    span:nth-child(2){
+
+        @apply whitespace-nowrap;
+
+        @apply font-thin;
+        
+    }
+
+}
+
+.list-heading-sm{
+
+    @apply list-heading;
+    @apply mb-6;
+
+}
+
+
+
+
+/*************************/
+/* CONTENT LAYOUT */
+/*************************/
+
+
+.content-layout{
+
+    @apply mx-auto;
+    @apply w-3/4;
+    
+    @apply flex;
+    @apply flex-col;
+    
+}
+
+
+
+
+/*************************/
+/* CONTENT LIST ITEM */
+/*************************/
+
+
+@utility content-list-item{
+
+    @apply pl-5;
+    @apply py-1;
+    @apply flex;
+    @apply items-center;
+    @apply shadow;
+
+
+    >.image{
+
+        @apply w-2/5;
+
+
+        >img{
+
+            @apply w-full;
+
+        }
+
+    }
+
+
+    .text{
+
+        @apply px-8;
+        @apply py-8;
+
+        @apply w-3/5;
+
+        @apply -translate-y-1.5;
+
+        @apply flex;
+        @apply flex-col;
+        @apply gap-4;        
+        @apply justify-center;
+        @apply items-center;
+        @apply text-center;
+
+
+        a.title{
+
+            @apply text-xl;
+            @apply font-bold;
+            @apply font-roboto-slab;
+            @apply hover-dip;
+            @apply hover-red;
+
+        }
+
+    }
+
+}
+
+
+
+
+/*************************/
+/* CONTENT LIST ITEM - SMALL */
+/*************************/
+
+
+.content-list-item-sm{
+
+    @apply content-list-item;
+
+    @apply bg-white;
+    @apply p-4;
+
+
+    .image{
+
+        @apply w-1/3;
+        @apply shadow;
+
+    }
+
+
+    .text{
+
+        @apply p-0;
+        @apply w-2/3;
+        @apply -translate-y-0.5;
+        @apply gap-1;        
+
+
+
+        a.title{
+
+            @apply text-lg;
+            @apply font-medium;
+
+        }
+
+    }
+
+}
+
+
+.content-list-item-vertical{
+
+    @apply flex-col;
+
+    >.image{
+        @apply w-full;
+    }
+
+
+    .text{
+
+        @apply px-2;
+        @apply py-8;
+    
+        @apply w-full;
+
+    }
+
+}
+
+
+
+
+/* Admin content table card */
+
+.admin-content-table-card{
+    @apply mt-12;
+    @apply p-6;
+    @apply bg-gray-50;
+    @apply border;
+    @apply rounded-xl;
+
+    >.title-and-buttons{
+        @apply flex;
+        @apply justify-between;
+        @apply items-center;
+        @apply border-b;
+        @apply border-b-slate-300;
+        @apply pt-3;
+        @apply pb-7;
+        @apply px-3;
+        
+        >span.title{
+            @apply block;
+            @apply font-extrabold;
+            @apply text-4xl;
+        }
+        
+        >ul.buttons{
+            @apply flex;
+            @apply gap-3;
+        }
+    }
+}
+
+/*************************/
+/* TABLE */
+/*************************/
+
+
+table.admin-table{
+    @apply w-full;
+    @apply text-center;
+    @apply border;
+    @apply shadow;
+}
+
+table.admin-table>thead{
+    @apply font-extrabold;
+    @apply border-b;
+    @apply bg-slate-600;
+    @apply text-white;
+        
+        
+}
+table.admin-table>thead>tr>th{
+    @apply py-2;
+}
+
+table.admin-table>tbody>tr{
+    @apply bg-white;
+    @apply border-b;
+}
+
+table.admin-table>tbody>tr.alternate-row{
+    @apply bg-yellow-50;
+}
+
+table.admin-table>tbody>tr>td{
+    @apply py-3;
+    @apply text-sm;
+    @apply font-light;
+    @apply font-roboto;
+    @apply text-gray-700;
+}
+
+table.admin-table>tbody>tr>td>div.image-and-title{
+    @apply flex;
+    @apply justify-start;
+    @apply items-center;
+    @apply gap-2;
+    @apply h-full;
+}
+
+table.admin-table>tbody>tr>td>div.image-and-title>img{
+    @apply w-10;
+    @apply rounded-sm;
+}
+
+
+
+
+
+.delete-content-card{
+
+    @apply p-4;
+    @apply w-full;
+    
+    @apply bg-white;
+    @apply border;
+    @apply border-gray-300;
+    @apply rounded;
+
+
+    div{
+
+        @apply flex;
+        @apply flex-col;
+        @apply gap-3;
+        @apply items-center;
+
+
+        img{
+
+            @apply w-full;
+
+        }
+
+        span{
+
+            @apply inline-block;
+
+            @apply text-2xl;
+            @apply font-semibold;
+        
+        }
+            
+    }
+
+}
