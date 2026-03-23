@@ -28,18 +28,21 @@
         <link href="https://fonts.cdnfonts.com/css/lemon-milk" rel="stylesheet">
 
 
-        {{-- @if(environmentIsProduction())
+        @if(environmentIsProduction())
             @foreach(explodeCssAssets() as $cssAsset)
-                <link href="{{ asset('build/assets/'.trim($cssAsset))}}"  rel="preload" as="style" onload="this.rel='stylesheet'">
+                {{-- <link href="{{ asset('build/assets/'.trim($cssAsset))}}"  rel="preload" as="style" onload="this.rel='stylesheet'"> --}}
+                <link href="{{ asset('build/assets/app-Bl5bac6d.css')}}"  rel="preload" as="style" onload="this.rel='stylesheet'">
+                
             @endforeach
             @foreach(explodeJsAssets() as $jsAsset)
-                <script src="{{ asset('build/assets/'.trim($jsAsset)) }}" defer></script>
+                {{-- <script src="{{ asset('build/assets/'.trim($jsAsset)) }}" defer></script> --}}
+                <script src="{{ asset('build/assets/app-_3sEYpZz.js') }}" defer></script>
             @endforeach
         @else
             @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @endif --}}
+        @endif
 
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
     </head>
 

@@ -129,14 +129,14 @@
             </a>
         </li> --}}
 
-        {{-- <li>
+        <li>
             <a
                 href="/support"
                 aria-label="Support True Crime Metrix"
             >
                 Support us
             </a>
-        </li> --}}
+        </li>
 
         {{-- <li>
             <a
