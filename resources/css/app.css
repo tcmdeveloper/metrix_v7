@@ -11,7 +11,10 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 
-    --color-metrix-light: #ff0000;            
+    --color-metrix-light: #ff0000;
+    
+    --color-olive-300: oklch(93% 0.007 106.5);
+    --color-olive-900: oklch(28.6% 0.016 107.4);
 
     --font-nunito: 'Nunito', sans-serif;  
     --font-poppins: 'Poppins', sans-serif;

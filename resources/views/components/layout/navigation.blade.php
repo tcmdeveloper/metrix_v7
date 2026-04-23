@@ -28,7 +28,6 @@
                     aria-label="Go to True Crime Metrix homepage"
                     class="text-xl! md:text-2xl!"
                 >   
-                    <img src="{{asset('images/favicon-94x94.png')}}" class="inline-block w-[42px]">
                     {{config('app.name')}}
 
                 </a>
@@ -131,12 +130,21 @@
 
         <li>
             <a
+                href="/trials/schedule"
+                aria-label="Upcoming trial schedule"
+            >
+                Upcoming trials
+            </a>
+        </li>
+
+        {{-- <li>
+            <a
                 href="/support"
                 aria-label="Support True Crime Metrix"
             >
                 Support us
             </a>
-        </li>
+        </li> --}}
 
         {{-- <li>
             <a

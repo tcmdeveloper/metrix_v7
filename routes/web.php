@@ -43,8 +43,9 @@ use Illuminate\Support\Facades\Route;
 
     Route::controller(SiteController::class)->group(function(){
 
-        Route::get('/', 'index');
+        Route::get('/', 'index')->name('home');
         Route::get('/about', 'viewAbout');
+        Route::get('/trials/schedule', 'viewTrialsSchedule');
         Route::get('/support', 'viewSupport');
         Route::get('/contact', 'viewContact');
         Route::get('/opportunities', 'viewOpportunities');

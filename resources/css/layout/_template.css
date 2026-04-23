@@ -11,7 +11,7 @@ body{
         flex
         flex-col
         bg-[#121212]
-        text-slate-100
+        text-olive-300
         font-light
     ;
 
@@ -47,7 +47,11 @@ main{
         mx-auto
         px-4
         md:px-0
-        w-1/2
+        w-full
+        md:w-4/5
+        xl:w-2/3
+        2xl:w-1/2
+        
     ;
 
 }

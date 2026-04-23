@@ -13,12 +13,12 @@
         p-6
         flex
         items-center
-        bg-[#1c1c1e]
+        bg-black
         border-b
-        border-light
+        border-olive-900
         shadow-sm
         text-center
-        text-white
+        text-stone-700
         font-black
         font-lemon-milk
         capitalize
@@ -26,7 +26,7 @@
         text-2xl
         md:text-3xl
     ;
-
+ 
     ul{
 
         @apply
@@ -67,6 +67,19 @@
                 text-end
             ;
         }
+
+    }
+
+    .container{
+
+        @apply 
+            mx-auto
+            px-4
+            md:px-0
+            w-full
+            xl:w-4/5
+            2xl:w-2/3
+        ;
 
     }
 

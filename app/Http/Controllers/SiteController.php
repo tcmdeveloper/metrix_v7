@@ -42,7 +42,7 @@ class SiteController extends Controller
 
 
 
-
+ 
     // GRAB SEARCH TERM
 
     public function grabSearchTerm(Request $request){
@@ -79,6 +79,18 @@ class SiteController extends Controller
         ]);
     }
 
+    public function viewTrialsSchedule(){
+
+        Meta::setTitle('Upcoming trial schedule - True Crime Metrix');
+
+        return view('pages.support', [
+            'pageHeadings' => [
+                'Upcoming trial schedule',
+                'What trials are happening this year?'
+            ]
+        ]);
+    }
+
 
 
 
@@ -86,14 +98,16 @@ class SiteController extends Controller
 
     public function viewSupport(){
 
-        Meta::setTitle('Support us - True Crime Metrix');
+        return redirect()->route('home');
 
-        return view('pages.support', [
-            'pageHeadings' => [
-                'Support us',
-                'Powered by the people. For the people.'
-            ]
-        ]);
+        // Meta::setTitle('Support us - True Crime Metrix');
+
+        // return view('pages.support', [
+        //     'pageHeadings' => [
+        //         'Support us',
+        //         'Powered by the people. For the people.'
+        //     ]
+        // ]);
     }
 
 
