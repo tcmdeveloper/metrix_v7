@@ -3,6 +3,8 @@
 use App\Http\Controllers\CriminalCaseController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VideoController;
+use App\Http\Controllers\YouTubeController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -35,6 +37,14 @@ use Illuminate\Support\Facades\Route;
 
 
 
+Route::get('/youtube/connect', [YouTubeController::class, 'redirectToGoogle']);
+Route::get('/youtube/callback', [YouTubeController::class, 'handleGoogleCallback']);
+Route::get('/youtube/channel', [YouTubeController::class, 'channel']);
+
+Route::get('/youtube/live/chat', [YouTubeController::class, 'showLiveChatList']);
+
+Route::get('/youtube/data/show', [YouTubeController::class, 'showData']);
+
 
 // SITE CONTROLLER 
 
@@ -53,6 +63,23 @@ use Illuminate\Support\Facades\Route;
         Route::get('/terms-of-service', 'viewTermsOfService');
         Route::post('grab-search-term', 'grabSearchTerm');
         Route::get('/search/{search_term}', 'searchResults');
+
+    });
+
+
+
+
+// VIDEO CONTROLLER 
+
+
+    // ALL USERS
+
+    Route::controller(VideoController::class)->group(function(){
+
+
+        Route::post('videos/download/submit', 'submitFormData');
+        Route::get('videos/download', 'showDownloadForm');
+        Route::get('videos', 'index');
 
     });
 

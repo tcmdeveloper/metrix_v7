@@ -21,6 +21,9 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if ($this->app->runningInConsole()) {
+            return;
+        }
         $this->globalThings();
     }
 
@@ -31,7 +34,10 @@ class ComposerServiceProvider extends ServiceProvider
         //     //get the data however you want it!
         //     $view->with('global', Setting::find(1));
         // });
+
+
         $app_settings = AppSetting::where('hex', 'Ok5kxWz9yiW')->first();
+        
         Config::set([
             'hex' => $app_settings->hex,
             'meta_title' => $app_settings->meta_title,
@@ -59,5 +65,6 @@ class ComposerServiceProvider extends ServiceProvider
             'updated_at' => $app_settings->updated_at,
             'site_offline' => $app_settings->site_offline
         ]);
+        
     }
 }

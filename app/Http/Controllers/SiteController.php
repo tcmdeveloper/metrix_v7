@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CriminalCase;
+use App\Models\ImageSmash;
 use App\Models\Site;
 use App\Models\State;
-use App\Models\ImageSmash;
-use App\Models\CriminalCase;
-use Illuminate\Http\Request;
 use Butschster\Head\Facades\Meta;
+use Google\Client;
+use Google\Service\YouTube;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
+
 
 class SiteController extends Controller
 {
@@ -20,6 +25,74 @@ class SiteController extends Controller
         $this->site = $site;
     }
 
+
+
+
+    public function list(string $playlistId = 'PLHRdz631KHAR2e8EhmcmtsipasGpUHuMA')
+    {
+
+        $channelId = 'UCmxo_X-7QmVgpMDH6q1wRwg';
+        $apiKey = env('YOUTUBE_API_KEY');
+
+        // STEP 1: Get playlist items
+        $playlistResponse = Http::get(
+            'https://www.googleapis.com/youtube/v3/playlistItems',
+            [
+                'part' => 'snippet,contentDetails',
+                'maxResults' => 1,
+                'playlistId' => $playlistId,
+                'key' => $apiKey,
+            ]
+        );
+
+        $playlistItems = $playlistResponse->json('items', []);
+
+        // STEP 2: Extract video IDs
+        $videoIds = collect($playlistItems)
+            ->pluck('contentDetails.videoId')
+            ->implode(',');
+
+        // STEP 3: Get all video details in ONE request
+        $videosResponse = Http::get(
+            'https://www.googleapis.com/youtube/v3/videos',
+            [
+                'part' => 'snippet,statistics,contentDetails',
+                'id' => $videoIds,
+                'key' => $apiKey,
+            ]
+        );
+
+        $videos = collect($videosResponse->json('items', []));
+
+        // STEP 4: Key videos by ID for quick lookup
+        $videosById = $videos->keyBy('id');
+
+        // STEP 5: Merge details into playlist items
+        $result = collect($playlistItems)->map(function ($item) use ($videosById) {
+
+            $videoId = $item['contentDetails']['videoId'];
+
+            $item['video'] = $videosById->get($videoId);
+
+            return $item;
+        });
+
+        foreach($result as $item){
+            // dump(collect($item)->dump());
+            echo '<pre>';
+            print_r($item);
+            // echo $item['kind'];
+            echo '</pre>';
+
+        }
+
+        // return $result->values()->toArray();
+
+    }
+
+
+
+    
 
 
 

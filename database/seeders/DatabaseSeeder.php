@@ -2,24 +2,42 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
      * Seed the application's database.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // \App\Models\User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // \App\Models\User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+
+        // DELETE ALL TABLES IN DB
+        // Artisan::call('migrate:reset', ['--force' => true]);
+        
+        $this->call([
+            UserTypeSeeder::class,
+            UserSeeder::class,
+            AppSettingSeeder::class,
+            StateSeeder::class,
+            CitySeeder::class,
+            CountySeeder::class,
+            ImageSeeder::class,
+            CategorySeeder::class,
+            CriminalCaseSeeder::class,
+            CriminalSeeder::class,
+            JudgeSeeder::class,
+            LawyerSeeder::class,
+            ArticleSeeder::class,
+            VictimSeeder::class,
         ]);
     }
 }
