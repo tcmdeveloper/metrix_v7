@@ -1,4 +1,31 @@
 import './bootstrap';
+import '../css/app.css'
+
+
+import Alpine from 'alpinejs'
+
+window.Alpine = Alpine
+
+Alpine.start()
+
+
+
+
+
+// CURSOR AT END OF INPUT IF IN AUTOFOCUS
+document.addEventListener('DOMContentLoaded', () => {
+    const el = document.getElementById('name');
+
+    if (el) {
+        el.focus();
+
+        // move cursor to end
+        const val = el.value;
+        el.value = '';
+        el.value = val;
+    }
+});
+
 
 /**************************************************/
 /*  Javsscript for opening & closing slide menu   */

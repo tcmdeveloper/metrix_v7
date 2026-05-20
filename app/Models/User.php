@@ -3,48 +3,50 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Monarobase\CountryList\CountryListFacade;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
     
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    // -----------------------------------------------------
+    // ATTRIBUTES
+    // -----------------------------------------------------
+
+
+    // Attributes for mass-assignment
+
     protected $fillable = [
-        'name',
+        'hex',
         'email',
         'password',
+        'google_id',
+        'username',
+        'display_name',
+        'first_name',
+        'last_name',
+        'avatar',
+        'country_code',
+        'state_code',
     ];
 
 
+    // Attributes hidden for serialization
 
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
+    
 
+    // Attributes that should be cast
 
-
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
@@ -53,57 +55,99 @@ class User extends Authenticatable
 
 
 
+    // -----------------------------------------------------
     // ROUTE KEY
+    // -----------------------------------------------------
 
 
-    // SET ROUTE KEY NAME
+    // Set route key
 
-    public function getRouteKeyName(){
-
-        return 'hex';
-        
+    public function getRouteKeyName()
+    {
+        return 'hex';   
     }
 
 
-    // RETRIEVE ROUTE KEY VALUE
-    public function routeKeyValue(){
+    // Retrieve route key value
 
+    public function routeKeyValue()
+    {
         $routeKeyValue = $this->getRouteKeyName();
         return $this->$routeKeyValue;
-
     }
 
 
 
 
-    // PROFILE IMAGE PATH
+    // -----------------------------------------------------
+    // ELOQUENT ACCESSORS: GET ATTRIBUTES
+    // -----------------------------------------------------
 
-    public function image($size = null){
-        return 'images/users/'.$this->hex.'/'.$this->image;
+
+    // Full name
+
+    public function getFullNameAttribute(): ?string
+    {
+        if (!$this->first_name && !$this->last_name) {
+            return null;
+        }
+
+        return trim($this->first_name . ' ' . $this->last_name);
+    }
+
+
+    // Avatar URL
+
+    public function getAvatarUrlAttribute()
+    {
+        return $this->avatar
+            ?: asset('images/default-avatar.png');
+    }
+
+
+    // User handle
+
+    public function getUserHandleAttribute()
+    {
+        $userHandle = $this->display_name ?: $this->fullName;
+        return $userHandle;
+    }
+
+
+    // Country name   
+
+    public function getCountryNameAttribute(): ?string
+    {
+        return $this->country_code
+            ? CountryListFacade::getOne($this->country_code)
+            : null;
+    }
+
+    
+    // State name 
+    
+    public function getStateNameAttribute(): ?string
+    {
+        return $this->state_code
+            ? (config('states')[$this->state_code] ?? null)
+            : null;
     }
 
 
 
 
-    // FORMATTERS
+    // -----------------------------------------------------
+    // RENDERERS
+    // -----------------------------------------------------
+    
+    
+    // Short name
+
+    public function shortName()
+    {
+        return substr($this->first_name, 0, 2).substr($this->last_name, 0, 1);
+    }
 
 
-        // FULL NAME
-
-        public function fullName(){
-            return $this->first_name.' '.$this->last_name;
-        }
-
-
-        // SHOR NAME
-
-        public function shortName(){
-            return substr($this->first_name, 0, 2).substr($this->last_name, 0, 1);
-        }
-
-
-
-
-// END OF MODEL
     
 }

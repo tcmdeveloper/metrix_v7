@@ -10,8 +10,8 @@ body{
         h-screen
         flex
         flex-col
-        bg-[#121212]
-        text-olive-300
+        bg-[#FFFFFF]
+
         font-light
     ;
 
@@ -55,6 +55,18 @@ main{
     ;
 
 }
+
+
+.container-lg{
+
+        @apply 
+            mx-auto
+            w-full
+            xl:w-4/5
+            2xl:w-2/3
+        ;
+
+    }
 
 
 .container-sm{

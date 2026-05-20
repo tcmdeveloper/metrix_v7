@@ -10,7 +10,6 @@
         top-0
         w-screen
         h-[85px]
-        p-6
         flex
         items-center
         bg-black
@@ -18,7 +17,7 @@
         border-olive-900
         shadow-sm
         text-center
-        text-stone-700
+        text-stone-600
         font-black
         font-lemon-milk
         capitalize
@@ -39,7 +38,8 @@
         li{
 
             @apply 
-                w-[12.5%]
+                w-[20%]
+                md:w-[16%]
                 text-start
             ;
 
@@ -57,7 +57,8 @@
 
         li:nth-child(2){   
             @apply 
-                w-3/4
+                w-[60%]
+                md:w-[68%]
                 text-center
             ;
         }
@@ -66,22 +67,15 @@
             @apply
                 text-end
             ;
+
+            span{
+                
+            }
         }
 
     }
 
-    .container{
-
-        @apply 
-            mx-auto
-            px-4
-            md:px-0
-            w-full
-            xl:w-4/5
-            2xl:w-2/3
-        ;
-
-    }
+    
 
 }
 
@@ -128,13 +122,15 @@
         ;
 
         li>a,
-        li>form>a{
+        li>form>button{
             @apply 
                 block
                 px-2.5
                 py-1
 
                 rounded
+
+                cursor-pointer
 
                 no-underline
 

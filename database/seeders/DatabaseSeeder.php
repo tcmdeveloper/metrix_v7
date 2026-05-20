@@ -38,6 +38,8 @@ class DatabaseSeeder extends Seeder
             LawyerSeeder::class,
             ArticleSeeder::class,
             VictimSeeder::class,
+            DownloadSeeder::class,
+            EmailChangeRequestSeeder::class,
         ]);
     }
 }

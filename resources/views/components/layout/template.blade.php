@@ -54,14 +54,23 @@
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+
+        // LiveWire Styles & Scripts
+        @livewireStyles
+        
+
+
     </head>
 
     <body>
 
         <x-layout.navigation />
+        
 
         <main>
             <x-layout.container class="{{isset($containerClass) ? $containerClass : null}}">
+
+                 
 
                 <div>
                     {{-- @if(empty($breadcrumbs) === false)
@@ -71,6 +80,8 @@
                     @if(empty($pageHeadings) === false)
                         <x-cards.page-headings :pageHeadings="$pageHeadings" />
                     @endif
+
+                    <x-elements.alert />
 
                     {{$slot}}
 
@@ -84,6 +95,7 @@
 
         <x-blackout />
 
+        @livewireScripts
     </body>
 
 </html>

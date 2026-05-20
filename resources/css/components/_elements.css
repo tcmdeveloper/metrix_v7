@@ -5,26 +5,49 @@
 
 .btn{
 
-    @apply inline-block;
-    @apply px-6;
-    @apply py-1;
-    @apply w-fit;
+    @apply flex w-full items-center justify-center gap-3;
+    @apply px-4;
+    @apply py-4;
+    @apply w-full;
     @apply cursor-pointer;
 
-    @apply bg-black;
+    @apply bg-blue-500;
     @apply border;
-    @apply border-stone-700;
+    @apply border-zinc-300;
     @apply rounded;
     @apply shadow-sm;
 
-    @apply text-white;
+    @apply text-sm font-medium text-white;
     @apply font-bold;
     @apply no-underline;
     
     @apply animation-300;
 
-    @apply hover:translate-y-0.5;
-    
+    @apply hover:bg-blue-600 hover:shadow;
+
+}
+
+
+
+
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    height: 48px;
+    border: 1px solid #dadce0;
+    border-radius: 12px;
+    background: white;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.google-btn:hover {
+    background: #f7f8f8;
 }
 
 
@@ -93,7 +116,7 @@
 }
 
 
-.alert-danger{
+.alert-danger, .alert-error{
 
     @apply alert;
 

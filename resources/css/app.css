@@ -1,20 +1,26 @@
-@import 'tailwindcss';
-@import '../../node_modules/@fortawesome/fontawesome-free/css/all.min.css'; 
-
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+@import "tailwindcss";
 
 
+
+/* Your custom CSS */
+@import "./base/_reset.css";
+@import "./base/_typography.css";
+
+@import "./layout/_navigation.css";
+@import "./layout/_template.css";
+@import "./layout/_footer.css";
+
+@import "./components/_blocks.css";
+@import "./components/_cards.css";
+@import "./components/_elements.css";
+
+
+@import 'flag-icons/css/flag-icons.min.css';
+
+
+/* Tailwind v4 theme tokens */
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
-
-    --color-metrix-light: #ff0000;
-    
-    --color-olive-300: oklch(93% 0.007 106.5);
-    --color-olive-900: oklch(28.6% 0.016 107.4);
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
 
     --font-nunito: 'Nunito', sans-serif;  
     --font-poppins: 'Poppins', sans-serif;
@@ -22,21 +28,10 @@
     --font-roboto-slab: 'Roboto Slab', serif;
     --font-lemon-milk: 'LEMON MILK', sans-serif;
 
+    --color-metrix-light: #000;
 
+
+    
+    
 }
-
-
-@import './base/_reset.css';
-@import './base/_typography.css';
-
-@import './layout/_navigation.css';
-@import './layout/_template.css';
-@import './layout/_footer.css';
-
-@import './components/_blocks.css';
-@import './components/_cards.css';
-@import './components/_elements.css';
-
-
-
 

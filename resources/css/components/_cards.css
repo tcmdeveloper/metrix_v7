@@ -7,22 +7,82 @@
 
 
 
-.form-card{
+.card{
 
-    @apply mx-auto;
-    @apply p-10;
+    @apply 
+        mx-auto
+        p-10
+        bg-transparent
+        border
+        border-stone-100
+        rounded
+        w-2/3
+        shadow-sm
+    ;
+
+}
+
+
+.card-divider{
+    @apply my-6 border-t border-stone-300;
+}
+
+
+.access-card{
+    @apply bg-slate-100! border-slate-200!;
+}
 
 
 
-    @apply rounded;
-    @apply shadow-sm;
+
+ .profile-card{
+
+    .header{
+        @apply 
+            flex
+            justify-between
+            items-center
+        ;
+    }
+
+    ul.details-list{
+        @apply flex flex-col my-6;
+
+        li{
+            @apply flex justify-between items-center border-t border-stone-200 py-5;
+        }
+
+        li:last-child {
+            @apply border-b;
+        }
+        
+    }
+
+ }
+
+
+
+
+.card{
+
+    
+    div.form-or-spacer{
+        @apply flex items-center gap-4 !py-6;
+
+        div{
+            @apply flex-1 border-t text-stone-300;
+        }
+        span{
+            @apply font-bold text-stone-500;
+        }
+    }
 
 
     form{
 
         @apply grid;
         @apply grid-cols-2;
-        @apply gap-3;
+        @apply gap-0;
 
 
         .form-field,
@@ -50,6 +110,28 @@
         }
 
 
+        .form-links{
+            
+            @apply 
+                font-light
+                text-stone-500
+                flex
+                justify-center
+                mt-6
+                bg-transparent
+            ;
+
+            span{
+
+                a.blue-link{
+                    @apply text-blue-500 underline hover:no-underline;
+                }
+
+            }
+
+        }
+
+
         label{
 
             @apply text-sm;
@@ -70,13 +152,15 @@
                 px-4
 
                 border
-                border-stone-700
+                border-stone-300
                 outline-slate-400
 
                 text-lg
-                text-slate-500
+                text-stone-800
 
-                bg-stone-900
+                bg-white
+
+                focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-100
 
             ;
 
@@ -87,7 +171,7 @@
         textarea::placeholder,
         select:not(:valid){
 
-            @apply text-slate-300;
+            @apply text-stone-400;
 
         }
 
@@ -102,6 +186,8 @@
             @apply font-roboto;            
 
         }
+
+        
 
 
     }

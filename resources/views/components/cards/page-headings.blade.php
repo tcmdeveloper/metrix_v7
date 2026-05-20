@@ -6,3 +6,4 @@
         <h2>{!!$pageHeadings[1]!!}</h2>
     @endunless
 </div>
+

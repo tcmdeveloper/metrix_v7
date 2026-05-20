@@ -277,6 +277,24 @@ use Illuminate\Support\Facades\Vite;
             ];
         }
     }
+
+
+
+    // THE HELPERS ADDED SINCE GOOGLE LOGIN CREATED
+
+    if(!function_exists('splitGoogleName')){
+        function splitGoogleName(string $name): array
+        {
+            $parts = explode(' ', trim($name));
+
+            return [
+                'first_name' => $parts[0] ?? null,
+                'last_name' => count($parts) > 1
+                    ? implode(' ', array_slice($parts, 1))
+                    : null,
+            ];
+        }
+    }
     
 
 

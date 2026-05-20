@@ -45,40 +45,66 @@
                     target="_blank"
                     aria-label="Subscribe to True Crime Metrix on YouTube"
                     >
-                    <i class="fa-brands fa-youtube"></i>
+                    <x-icon.brand name="youtube" class="w-4 h-4" />
                 </a>
                 <a 
                     href="{{config('discord_url')}}"
                     target="_blank"
                     aria-label="Join True Crime Metrix on Discord"
                     >
-                    <i class="fa-brands fa-discord"></i>
+                    <x-icon.brand name="discord" class="w-4 h-4" />
                 </a>
                 <a 
                     href="{{config('instagram_url')}}" 
                     target="_blank" 
                     aria-label="Follow True Crime Metrix on Instagram"
                     >
-                    <i class="fa-brands fa-instagram"></i>
+                    <x-icon.brand name="instagram" class="w-4 h-4" />
                 </a>
                 <a 
                     href="{{config('twitter_url')}}"
                     target="_blank"
-                    aria-label="Follow True Crime Metrix on Twitter"
+                    aria-label="Follow True Crime Metrix on X"
                     >
-                    <i class="fa-brands fa-twitter"></i>
+                    <x-icon.brand name="x" class="w-4 h-4" />
+                </a>
+
+            </li>
+
+            <li class="socials">
+                <span>
+                    Support links
+                </span>
+                <a 
+                    href="http://paypal.me/truecrimemetrix"
+                    target="_blank"
+                    aria-label="Support us on PayPal"
+                    >
+                    <x-icon.brand name="buymeacoffee" class="w-4 h-4" />
                 </a>
                 <a 
-                    href="{{config('facebook_url')}}"
-                    target="_blank" 
-                    aria-label="Follow True Crime Metrix on Facebook"
+                    href="http://buymeacoffee.com/truecrimemetrix"
+                    target="_blank"
+                    aria-label="Buy me a coffee"
                     >
-                    <i class="fa-brands fa-facebook-f"></i>
+                    <x-icon.brand name="buymeacoffee" class="w-4 h-4" />
                 </a>
-                
-                
-                
+                <a 
+                    href="https://www.patreon.com/truecrimemetrix_official"
+                    target="_blank"
+                    aria-label="Follow True Crime Metrix on Twitter"
+                    >
+                    <x-icon.brand name="patreon" class="w-4 h-4" />
+                </a>
+                <a 
+                    href="https://www.bonfire.com/store/true-crime-metrix/"
+                    target="_blank"
+                    aria-label="Buy me a coffee"
+                    >
+                    <x-heroicon-o-shopping-cart class="w-5 h-5 stroke-2" />
+                </a>
             </li>
+
             <li class="copyright">
                 Copyright © {{date('Y', time())}} {{config('copyright')}}&nbsp;&nbsp;|&nbsp;&nbsp;All rights reserved. 
             </li>
