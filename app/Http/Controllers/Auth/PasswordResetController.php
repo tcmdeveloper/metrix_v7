@@ -88,10 +88,10 @@ class PasswordResetController extends Controller
 
         $pageHeadings = [
             'Reset your password',
-            'Enter your new password and click Save.'
+            'Enter your new password for your account.'
         ];
 
-        return view('users.reset-password', compact('token', 'email', 'pageHeadings'));
+        return view('auth.reset-password', compact('token', 'email', 'pageHeadings'));
         
     }
 

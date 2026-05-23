@@ -47,7 +47,7 @@ class RegisterRequest extends FormRequest
             'email.unique' => 'Email already in use.',
 
             // Username
-            'username.required' => 'Please enter a username for your account.',
+            'username.required' => 'Please enter a username.',
             'username.min' => 'Username must be at least 3 characters.',
             'username.max' => 'Username cannot be more than 20 characters.',
             'username.alpha_dash' => 'Username can only contain letters, numbers, dashes, and underscores.',

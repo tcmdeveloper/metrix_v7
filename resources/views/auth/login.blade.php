@@ -1,23 +1,26 @@
+{{-- resources/views/auth/login.blade.php --}}
+
+
 <x-layout.template :page-headings="$pageHeadings">
 
 
-    {{-- Open form-card component --}}
-
-    <x-cards.form class="card access-card">
+    <x-cards.form class="auth-card">
 
 
+        {{-- Social login --}}
 
-        {{-- Button to sign in using Google account --}}
-
-        <a href="{{ url('/auth/google') }}">
+        <a
+            href="{{ url('/auth/google') }}"
+            class="block"
+            aria-label="Sign in with Google"
+        >
             <x-elements.google-signin-button />
         </a>
 
 
+        {{-- Divider --}}
 
-        {{-- Form or spacer --}}
-        
-        <div class="form-or-spacer">
+        <div class="form-or-spacer" aria-hidden="true">
             <div></div>
             <span>OR</span>
             <div></div>
@@ -25,155 +28,195 @@
 
 
         @php
-            $focusPassword =
-                ($errors->has('password') || $errors->has('credentials'))
-                && ! $errors->has('email');
+            if ($errors->has('email')) {
+                $focusField = 'email';
+            } elseif ($errors->has('password') || $errors->has('credentials')) {
+                $focusField = 'password';
+            } else {
+                $focusField = 'email';
+            }
         @endphp
 
 
 
-        {{-- Sign in form (default hidden) --}}
-
-        <div
-            x-data="{ open: @js(request()->routeIs('login')) }"
-            x-init="
-
-                if (open) {
-                
-                    $nextTick(() => {
-
-                        if (@js($focusPassword)) {
-
-                            $refs.password?.focus();
-
-                        } else {
-
-                            $refs.email?.focus();
-
-                            const length = $refs.email.value.length;
-
-                            $refs.email.setSelectionRange(length, length);
-
-                        }
-
-                    })
-
-                }
-
-            "
-            
-        >
-
-
-            {{-- Button to show sign in form --}}
-
-            <button
-                x-show="!open"
-                @click="
-                    open = true;
-                    $nextTick(() => $refs.email?.focus())
-                "
-                class="btn"
-            >
-                Sign in with email
-            </button>
-
+        <x-autofocus-errors :field="$focusField" route="login">
 
 
             <form
                 action="{{ route('login.authenticate') }}"
                 method="POST"
-                x-show="open"
-                x-transition
                 novalidate
+                class="space-y-4"
             >
 
                 @csrf
 
-
                 {{-- Email --}}
-                
+
                 <div class="form-field">
+
+                    <label
+                        for="email"
+                        class="sr-only"
+                    >
+                        Email address
+                    </label>
+
                     <input
                         x-ref="email"
-                        type="email"
+                        id="email"
+                        type="text"
+                        inputmode="email"
                         name="email"
                         placeholder="Email address"
                         value="{{ old('email', session('login_email')) }}"
+                        @class([
+                            'input',
+                            'input-error' => $errors->has('email')
+                        ])
                     >
-                </div>
 
+                    @error('email')
+                        <p class="form-error">
+                            {{ $message }}
+                        </p>
+                    @enderror
+
+                </div>
 
 
                 {{-- Password --}}
 
                 <div class="form-field">
+
+                    <label
+                        for="password"
+                        class="sr-only"
+                    >
+                        Password
+                    </label>
+
                     <input
                         x-ref="password"
+                        id="password"
                         type="password"
                         name="password"
                         placeholder="Password"
+                        @class([
+                            'input',
+                                'input-error' => $errors->has('password') || $errors->has('credentials')
+                        ])
                     >
-                </div>
 
+                    @if (! $errors->has('email'))
+                        @error('password')
+                            <p class="form-error">{{ $message }}</p>
+                        @enderror
+
+                        @error('credentials')
+                            <p class="form-error">{{ $message }}</p>
+                        @enderror
+                    @endif
+
+                </div>
 
 
                 {{-- Remember me --}}
 
-                <div class="form-field !mb-4">
-                    <label class="flex items-center gap-2 cursor-pointer">
-                        <input type="checkbox" class="peer sr-only">
-                        <div
-                            class="w-5 h-5 border border-stone-300 bg-white
-                                flex items-center justify-center
-                                peer-checked:bg-blue-400
-                                peer-checked:border-stone-400
-                                peer-checked:[&>svg]:opacity-100"
+                <div class="form-field">
+
+                    <label
+                        for="remember"
+                        class="flex items-center gap-3 cursor-pointer select-none"
+                    >
+
+                        <input
+                            id="remember"
+                            type="checkbox"
+                            name="remember"
+                            value="1"
+                            class="peer sr-only"
+                            {{ old('remember') ? 'checked' : '' }}
                         >
-                            <x-heroicon-o-check class="w-8 h-8 stroke-2 opacity-0 transition-opacity text-white" />
+
+                        <div
+                            class="
+                                flex items-center justify-center
+                                w-5 h-5
+                                rounded
+                                border border-stone-300
+                                bg-white
+                                transition-colors
+
+                                peer-focus:ring-2
+                                peer-focus:ring-blue-200
+
+                                peer-checked:bg-blue-500
+                                peer-checked:border-blue-500
+                            "
+                        >
+                            <x-heroicon-o-check
+                                class="
+                                    w-4 h-4
+                                    text-white
+                                    opacity-0
+                                    transition-opacity
+                                    peer-checked:opacity-100
+                                "
+                            />
                         </div>
-                        <span class="text-stone-500">Remember me</span>
+
+                        <span class="text-sm text-stone-600">
+                            Remember me
+                        </span>
+
                     </label>
+
                 </div>
 
 
-
-                {{-- Buttons --}}
+                {{-- Submit button --}}
 
                 <div class="form-buttons">
-                    <button type="submit" class="btn">
+
+                    <button 
+                        type="submit" 
+                        class="btn btn-primary w-full"
+                    >
                         Sign in
                     </button>
+
                 </div>
 
 
+                {{-- Links --}}
 
-                {{-- Links--}}
+                <div class="form-links items-start text-left">
+                    
+                    <a 
+                        href="{{ route('password.request') }}" 
+                        class="link"
+                    >
+                        Forgot your password?
+                    </a>
 
-                <div class="form-links flex-col">
-                    <span>
-                        <a href="{{ route('password.request') }}">
-                            Forgot your password?
-                        </a>
-                    </span>
-                    <span>
-                        <a href="{{ route('register') }}">
-                            Create an account
-                        </a>
-                    </span>
+                    <a 
+                        href="{{ route('register') }}"
+                        class="link"    
+                    >
+                        Create an account
+                    </a>
+                    
                 </div>
-
 
 
             </form>
-        
 
-        </div>
+
+        </x-autofocus-errors>
 
 
     </x-cards.form>
 
 
 </x-layout.template>
-
-

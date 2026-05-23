@@ -55,7 +55,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
-        // LiveWire Styles & Scripts
+        {{-- LiveWire Styles & Scripts --}}
         @livewireStyles
         
 

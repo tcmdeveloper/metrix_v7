@@ -1,0 +1,89 @@
+/* -----------------------------------------------------
+// BODY
+// ---------------------------------------------------*/
+
+
+body{
+
+    @apply 
+        font-serif
+    ;
+    
+}
+
+
+
+
+/* -----------------------------------------------------
+// HEADINGS
+// ---------------------------------------------------*/
+
+
+h1{
+
+    @apply
+        py-3
+        text-5xl
+        text-center
+        font-black
+        font-serif
+    ;
+
+}
+
+
+h2{
+
+    @apply 
+        py-3
+        text-3xl
+        text-center
+        font-thin
+    ;
+
+}
+
+
+h3{
+
+    @apply 
+        mb-8
+        text-2xl
+        font-bold
+        font-serif
+        leading-8
+        tracking-tight
+    ;
+
+}
+
+
+
+
+/* -----------------------------------------------------
+// TEXT ELEMENTS
+// ---------------------------------------------------*/
+
+.link {
+    @apply
+        text-blue-600
+        underline
+        underline-offset-2
+        decoration-transparent
+        transition-all
+        duration-200
+        hover:text-blue-700
+        hover:decoration-current
+        focus:outline-none
+        focus:ring-2
+        focus:ring-blue-200
+        rounded-sm;
+}
+
+p{
+    
+    @apply
+        mb-3
+    ;
+
+}

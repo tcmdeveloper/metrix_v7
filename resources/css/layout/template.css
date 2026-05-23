@@ -1,0 +1,117 @@
+/*************************/
+/* MAIN */
+/*************************/
+
+
+body{
+
+    @apply 
+        w-screen
+        h-screen
+        flex
+        flex-col
+        bg-[#FFFFFF]
+
+        font-light
+    ;
+
+}
+
+
+
+
+/*************************/
+/* MAIN */
+/*************************/
+    
+
+main{
+
+    @apply 
+        my-[5.3rem]
+        grow
+    ;
+
+}
+
+
+
+/*************************/
+/* CONTAINER */
+/*************************/
+
+
+.container{
+
+    @apply 
+        mx-auto
+        px-4
+        md:px-0
+        w-full
+        md:w-4/5
+        xl:w-2/3
+        2xl:w-1/2
+        
+    ;
+
+}
+
+
+.container-lg{
+
+        @apply 
+            mx-auto
+            w-full
+            xl:w-4/5
+            2xl:w-2/3
+        ;
+
+    }
+
+
+.container-sm{
+    
+    @apply 
+        md:w-2/3
+        xl:w-2/5
+    ;    
+
+}
+
+
+
+
+/*************************/
+/* BLACKOUT */
+/*************************/
+
+
+#blackout{
+
+    @apply
+        fixed
+        left-0
+        top-0
+        w-screen
+        h-screen
+        bg-gray-900/60
+        z-10
+    ;
+
+}
+
+
+
+
+
+/* BORDER */
+
+@utility border-light{
+
+    @apply
+        border-slate-300
+    ;
+}
+
+
+

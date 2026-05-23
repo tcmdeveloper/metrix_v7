@@ -2,30 +2,130 @@
 /* BUTTONS */
 /*************************/
 
+@layer components {
 
-.btn{
+    /*************************/
+    /* BASE BUTTON */
+    /*************************/
 
-    @apply flex w-full items-center justify-center gap-3;
-    @apply px-4;
-    @apply py-4;
-    @apply w-full;
-    @apply cursor-pointer;
+    .btn {
+        @apply
+            inline-flex items-center justify-center gap-2
+            px-4! py-3!
+            rounded-sm
+            font-medium tracking-wide
+            cursor-pointer
+            transition-all duration-200
+            disabled:opacity-50 disabled:pointer-events-none
+            hover:shadow-sm
+            hover:brightness-110
+            hover:translate-y-[1px]
+            active:scale-[0.98];
+    }
 
-    @apply bg-blue-500;
-    @apply border;
-    @apply border-zinc-300;
-    @apply rounded;
-    @apply shadow-sm;
 
-    @apply text-sm font-medium text-white;
-    @apply font-bold;
-    @apply no-underline;
-    
-    @apply animation-300;
+    /*************************/
+    /* BUTTON SIZES */
+    /*************************/
 
-    @apply hover:bg-blue-600 hover:shadow;
+    .btn-sm {
+        @apply px-2! py-1! text-xs;
+    }
+
+    .btn-md {
+        @apply px-4 py-3 text-sm;
+    }
+
+    .btn-lg {
+        @apply px-6 py-4 text-base;
+    }
+
+
+    /*************************/
+    /* BUTTON VARIANTS */
+    /*************************/
+
+    .btn-primary {
+        @apply
+            text-white
+            bg-blue-400
+            shadow-md;
+    }
+
+    .btn-success {
+        @apply
+            text-taupe-950
+            bg-lime-500
+            shadow-md;
+    }
+
+    .btn-danger {
+        @apply
+            text-taupe-950
+            bg-rose-400
+            shadow-md;
+    }
+
+    .btn-neutral {
+        @apply
+            bg-white
+            border border-gray-200
+            text-gray-700
+            shadow-md;
+    }
+
+    .btn-normal {
+        @apply
+            text-white
+            bg-slate-600
+            shadow-md;
+    }
+
+
+
+
+    .input {
+            @apply
+                w-full
+                px-4!
+                py-2!
+                border border-stone-300
+                bg-white
+                text-lg text-stone-800
+                placeholder:text-gray-400
+                outline-slate-400
+                transition-all duration-200
+                outline-none focus:ring focus:ring-blue-100 focus:border-blue-100
+                disabled:opacity-50
+                disabled:cursor-not-allowed
+            ;
+        }
+
+        /* Sizes */
+        .input-xs {
+            @apply px-2 py-1 text-xs;
+        }
+
+        .input-sm {
+            @apply px-3! py-2! text-sm;
+        }
+
+        .input-md {
+            @apply px-4 py-3 text-base;
+        }
+
+        .input-lg {
+            @apply px-5 py-4 text-lg;
+        }
+
+        .input-xl {
+            @apply px-6 py-5 text-xl;
+        }
+
 
 }
+
+
 
 
 

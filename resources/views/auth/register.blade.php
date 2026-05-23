@@ -1,194 +1,228 @@
+{{-- resources/views/auth/register.blade.php --}}
+
+
 <x-layout.template :page-headings="$pageHeadings">
 
 
-    {{-- Open form-card component --}}
-
-    <x-cards.form class="card access-card">
+    <x-cards.form class="auth-card">
 
 
+        {{-- Social login --}}
 
-        {{-- Button to sign in using Google account --}}
-
-        <a href="{{ url('/auth/google') }}">
+        <a
+            href="{{ url('/auth/google') }}"
+            class="block"
+            aria-label="Sign in with Google"
+        >
             <x-elements.google-signin-button />
         </a>
 
 
-
-        {{-- Form or spacer --}}
+        {{-- Divider --}}
         
-        <div class="form-or-spacer">
+        <div class="form-or-spacer" aria-hidden="true">
             <div></div>
             <span>OR</span>
             <div></div>
         </div>
 
-
-
+        
         @php
-            $focusEmail =
-                $errors->has('email')
-                || !$errors->any();
-
-            $focusUsername =
-                !$errors->has('email')
-                && ($errors->has('username'));
-
-            $focusPassword =
-                (!$errors->has('email') && !$errors->has('username'))
-                && ($errors->has('password'));
-
-                // dd($focusUsername);
+            if ($errors->has('email')) {
+                $focusField = 'email';
+            } elseif ($errors->has('username')) {
+                $focusField = 'username';
+            } elseif ($errors->has('password')) {
+                $focusField = 'password';
+            } else {
+                $focusField = 'email';
+            }
         @endphp
       
 
 
-
-        {{-- Sign in form (default hidden) --}}
-
-        <div
-            x-data="{ open: @js(request()->routeIs('register')) }"
-            x-init="
-
-                if (open) {
-            
-                    $nextTick(() => {
-
-                        if (@js($focusEmail)) {
-                            $refs.email?.focus();
-
-                            const length = $refs.email.value.length;
-                            $refs.email.setSelectionRange(length, length);
-                        }
-
-                        if (@js($focusUsername)) {
-                            $refs.username?.focus();
-
-                            const length = $refs.username.value.length;
-                            $refs.username.setSelectionRange(length, length);
-                        }
-
-                        if (@js($focusPassword)) {
-                            $refs.password?.focus();
-                        }
-
-
-                    })
-
-                }
-
-            "
-
-        >
-
-
-            {{-- Button to show sign in form --}}
-
-            <button
-                x-show="!open"
-                @click="
-                    open = true;
-                    $nextTick(() => $refs.email?.focus())
-                "
-                class="btn"
-            >
-                Sign in with email
-            </button>
-
+        <x-autofocus-errors :field="$focusField" route="register">
 
 
             <form
                 action="{{ route('register.store') }}"
                 method="POST"
-                x-show="open"
-                x-transition
                 novalidate
+                class="space-y-4"
             >
 
                 @csrf
 
 
                 {{-- Email --}}
-                
+
                 <div class="form-field">
+
+                    <label
+                        for="email"
+                        class="sr-only"
+                    >
+                        Email address
+                    </label>
+
                     <input
                         x-ref="email"
-                        type="email"
+                        id="email"
+                        type="text"
+                        inputmode="email"
                         name="email"
                         placeholder="Email address"
-                        value="{{ old('email') }}"
+                        value="{{ old('email', session('login_email')) }}"
+                        @class([
+                            'input',
+                            'input-error' => $errors->has('email')
+                        ])
                     >
-                </div>
 
+                    @error('email')
+                        <p class="form-error">
+                            {{ $message }}
+                        </p>
+                    @enderror
+
+                </div>
 
 
                 {{-- Username --}}
-                
+
                 <div class="form-field">
+
+                    <label
+                        for="username"
+                        class="sr-only"
+                    >
+                        Username
+                    </label>
+
                     <input
                         x-ref="username"
+                        id="username"
                         type="text"
+                        inputmode="text"
                         name="username"
                         placeholder="Username"
                         value="{{ old('username') }}"
+                        @class([
+                            'input', 
+                            'input-error' => $errors->has('username')
+                        ])
                     >
+
+                    @if (! $errors->has('email'))
+                        @error('username')
+                            <p class="form-error">
+                                {{ $message }}
+                            </p>
+                        @enderror
+                    @endif
+
                 </div>
 
 
-
-                 {{-- Password --}}
+                
+                {{-- Password --}}
 
                 <div class="form-field">
+
+                    <label
+                        for="password"
+                        class="sr-only"
+                    >
+                        Password
+                    </label>
+
                     <input
                         x-ref="password"
+                        id="password"
                         type="password"
                         name="password"
                         placeholder="Password"
+                        @class([
+                            'input',
+                            'input-error' => $errors->has('password') || $errors->has('credentials')
+                        ])
                     >
-                </div>
 
+                    @if (! $errors->has('email') && ! $errors->has('username'))
+                        @error('password')
+                            <p class="form-error">{{ $message }}</p>
+                        @enderror
+
+                        @error('credentials')
+                            <p class="form-error">{{ $message }}</p>
+                        @enderror
+                    @endif
+
+                </div>
 
 
                 {{-- Confirm password --}}
 
                 <div class="form-field">
+
+                    <label
+                        for="password_confirmation"
+                        class="sr-only"
+                    >
+                        Confirm password
+                    </label>
+
                     <input
                         x-ref="password_confirmation"
+                        id="password_confirmation"
                         type="password"
                         name="password_confirmation"
                         placeholder="Confirm password"
+                        @class([
+                            'input',
+                            'input-error' => $errors->has('password') || $errors->has('credentials')
+                        ])
                     >
+
                 </div>
 
 
-
-                {{-- Buttons --}}
+                {{-- Submit button --}}
 
                 <div class="form-buttons">
-                    <button type="submit" class="btn">
+
+                    <button 
+                        type="submit"
+                        class="btn btn-primary w-full"
+                    >
                         Create account
                     </button>
+
                 </div>
 
 
+                {{-- Links --}}
 
-                {{-- Links--}}
+                <div class="form-links items-center text-center">
 
-                <div class="form-links col-span-2 justify-center">
-                    <span>
-                        Already have an account?
-                        <a href="{{ route('login') }}" class="blue-link">
-                            Sign in
-                        </a>
-                    </span>
+                    <span class="font-medium">Already have an account?</span>
+
+                    <a
+                        href="{{ route('login') }}"
+                        class="link inline-flex w-auto"
+                    >
+                        Sign in
+                    </a>
+                    
                 </div>
 
+                
 
 
             </form>
         
 
-        </div>
+        </x-autofocus-errors>
 
 
     </x-cards.form>

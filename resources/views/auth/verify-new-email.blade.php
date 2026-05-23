@@ -1,4 +1,4 @@
-{{-- resources/views/auth/verify-email.blade.php --}}
+{{-- resources/views/auth/verify-new-email.blade.php --}}
 
 <div class="max-w-md mx-auto text-center mt-20">
 

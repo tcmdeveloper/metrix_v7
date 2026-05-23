@@ -66,3 +66,27 @@
     }
 
 }
+
+
+
+
+
+
+
+
+/* NEW CSS FOR BLOCKS STARTS HERE */
+
+.dt-item{
+    @apply
+        flex flex-col gap-2 
+        p-6!
+        h-20
+        md:flex-row md:items-center md:justify-between
+    ;
+
+    .not-set{
+        @apply
+            text-stone-400
+        ;
+    }
+}

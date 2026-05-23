@@ -2,10 +2,9 @@ import './bootstrap';
 import '../css/app.css'
 
 
+// Load Alpine 
 import Alpine from 'alpinejs'
-
 window.Alpine = Alpine
-
 Alpine.start()
 
 
@@ -160,7 +159,7 @@ function resetAll() {
     hideBlackout();
 
     if(document.querySelector('.edit-popup-box')){
-        var popups = documents.querySelector('.edit-popup-box');
+        var popups = document.querySelector('.edit-popup-box');
 
         // Loop through the elements.
         for (var i = 0; i < popups.length; i++) {

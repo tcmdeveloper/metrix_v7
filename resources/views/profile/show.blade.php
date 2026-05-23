@@ -1,7 +1,7 @@
-<x-layout.template :page-headings="$pageHeadings">
-    
-   <div class="card profile-card">
+<div>
 
+    <x-cards.form class="profile-card">
+        
 
         {{-- Header --}}
 
@@ -20,134 +20,289 @@
             </div>
 
         </div>
-
-
-
-        {{-- Details list --}}
-
-        <ul class="details-list">
-
-
-            {{-- Name --}}
-
-            <li>
-                <span class="font-medium">Your name</span>
-                <span>
-                    @if($user->full_name)
-                        <span>{{ $user->full_name }}</span>
-                    @else
-                        <a href="{{ route('profile.edit') }}" class="flex items-center justify-center w-36
-                            bg-gray-100 border border-gray-300
-                            !px-4 !py-1
-                            text-xs font-normal text-gray-800
-                            rounded-sm shadow-sm
-                            transition-all duration-150 ease-in-out
-                            hover:bg-gray-200 hover:-translate-y-[1px] hover:shadow
-                            active:translate-y-0 active:shadow-sm
-                            focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
-                        >Add your name</a>
-                    @endif
-                </span>
-            </li>
-
-
-
-
-            {{-- Country --}}
-
-            <li>
-                <span class="font-medium">Country</span>
-                <span>
-                    @if($user->country_name)
-                        <span>{{ $user->country_name }}</span>
-                    @else
-                        <a href="{{ route('profile.edit') }}" class="flex items-center justify-center w-36
-                            bg-gray-100 border border-gray-300
-                            !px-4 !py-1
-                            text-xs font-normal text-gray-800
-                            rounded-sm shadow-sm
-                            transition-all duration-150 ease-in-out
-                            hover:bg-gray-200 hover:-translate-y-[1px] hover:shadow
-                            active:translate-y-0 active:shadow-sm
-                            focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
-                        >Add country</a>
-                    @endif
-                </span>
-            </li>
-
-
-
-
-            {{-- State --}}
-
-            @if ($user->country_code === 'US')
-
-                <li>
-                    <span class="font-medium">State</span>
-                    <span>{{ $user->state_name }}</span>
-                </li>
-            
-            @endif
-
-
-
-            {{-- Email --}}
-
-            <li>
-                <span class="font-medium">Email</span>
-                <span>
-                    @if($editing === 'newEmail')
-                        <input wire:model="form.newEmail">
-
-                        <button wire:click="saveName">Save</button>
-                        <button wire:click="$set('editing', null)">Cancel</button>
-                    @else
-                        <p>{{ $user->name }}</p>
-
-                        <button wire:click="$set('editing', 'newEmail')">
-                            Edit
-                        </button>
-                    @endif
-                </span>
-            </li>
-
-
-
-
-            {{-- Username --}}
-
-            <li>
-                <span class="font-medium">Username</span>
-                <span>
-                    @if($user->username)
-                        <span>{{ $user->username }}</span>
-                    @else
-                        <a href="{{ route('profile.edit') }}" class="flex items-center justify-center w-36
-                            bg-gray-100 border border-gray-300
-                            !px-4 !py-1
-                            text-xs font-normal text-gray-800
-                            rounded-sm shadow-sm
-                            transition-all duration-150 ease-in-out
-                            hover:bg-gray-200 hover:-translate-y-[1px] hover:shadow
-                            active:translate-y-0 active:shadow-sm
-                            focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
-                        >Choose username</a>
-                    @endif
-                </span>
-            </li>
-
-
-
-
-            {{-- Password --}}
-
-            <li>
-                <span class="font-medium">Password</span>
-                <span>••••••••</span>
-            </li>
-
         
-        </ul>
+
+        {{-- Form --}}
+
+        <form wire:submit.prevent="save">
+
+
+            {{-- Detailed list --}}
+
+            <dl class="divide-y divide-gray-100 rounded-xs border border-stone-100 shadow-sm bg-white mt-6!">
+
+
+                {{-- Your name --}}
+
+                <x-profile-field label="Your name">
+
+                    @if($editing)
+                        
+                        <div class="flex gap-3">
+                            <input
+                                type="text"
+                                wire:model.defer="form.first_name"
+                                placeholder="First name"
+                                @class([
+                                    'input',
+                                    'input-sm',
+                                    'input-error' => $errors->has('first_name')
+                                ])
+                            />
+
+                            <input
+                                type="text"
+                                wire:model.defer="form.last_name"
+                                placeholder="Last name"
+                                @class([
+                                    'input',
+                                    'input-sm',
+                                    'input-error' => $errors->has('last_name')
+                                ])
+                            />
+                        </div>
+
+                    @else
+                        @if($user->full_name)
+                            <span>
+                                {{ $user->full_name }}
+                            </span>
+                        @else
+                            <button
+                                type="button"
+                                wire:click="edit"
+                                class="btn btn-primary btn-sm"
+                            >
+                                Add name
+                            </button>
+                        @endif
+                    @endif
+
+                </x-profile-field>
+
+
+
+                {{-- Username --}}
+
+                <x-profile-field label="Username">
+
+                    
+                    @if($editing)
+                    
+                        <input
+                            type="text"
+                            wire:model.defer="form.username"
+                            placeholder="Username"
+                            @class([
+                                'input',
+                                'input-sm',
+                                'input-error' => $errors->has('username')
+                            ])
+                            @disabled(Auth::user()->username)
+                        />
+        
+
+                    @else
+                        @if($user->username)
+                            <span>
+                                {{ $user->username }}
+                            </span>
+                        @else
+                            <button
+                                type="button"
+                                wire:click="edit"
+                                class="btn btn-primary btn-sm"
+                            >
+                                Add username
+                            </button>
+                        @endif
+                    @endif
+                   
+
+                </x-profile-field>
+
+
+
+                {{-- Email --}}
+
+                <x-profile-field label="Email">
+
+                    @if($editing)
+                            
+                        <input
+                            type="text"
+                            wire:model.defer="form.newEmail"
+                            placeholder="Email"
+                            @class([
+                                'input',
+                                'input-sm',
+                                'input-error' => $errors->has('email')
+                            ])
+                        />
+
+                    @else
+
+                        <span>{{ $user->email }}</span>
+
+                    @endif
+
+                </x-profile-field>
+
+
+
+                {{-- Country --}}
+
+                <x-profile-field label="Country">
+
+                    @if($editing)
+                            
+                        <select
+                            wire:model.defer="form.country_code"
+                            @class([
+                                'input',
+                                'input-sm',
+                                'input-error' => $errors->has('country_code')
+                            ])
+                        >
+                            <option value="">
+                                Select country
+                            </option>
+                            @foreach ($this->countries() as $code => $name)
+                                <option value="{{ $code }}">
+                                    {{ $name }}
+                                </option>
+                            @endforeach
+                        </select>
+
+                        @error('form.country_code')
+                            <div class="mt-1 text-sm text-red-600">
+                                {{ $message }}
+                            </div>
+                        @enderror
+
+                    @else
+                        @if($user->country_code)
+                            
+                            <span>
+                                {{ $this->countries()[$user->country_code] ?? $user->country_code }}
+                            </span>
+                        @else
+                            <button
+                                type="button"
+                                wire:click="edit"
+                                class="btn btn-primary btn-sm"
+                            >
+                                Add country
+                            </button>
+                        @endif
+                    @endif
+
+                </x-profile-field>
+
+
+
+
+                @if($user->country_code === 'US')
+                    <x-profile-field label="State">
+                        @if($editing)
+                            
+                            <select
+                                wire:model.defer="form.state_code"
+                                @class([
+                                    'input',
+                                    'input-sm',
+                                    'input-error' => $errors->has('state_code')
+                                ])
+                            >
+                                <option value="">
+                                    Select state
+                                </option>
+                                @foreach ($this->states() as $code => $name)
+                                    <option value="{{ $code }}">
+                                        {{ $name }}
+                                    </option>
+                                @endforeach
+                            </select>
+
+                            @error('form.state_code')
+                                <div class="mt-1 text-sm text-red-600">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
+                        @else
+                            @if($user->state_code)
+                            
+                                <span>
+                                    {{ $this->states()[$user->state_code] ?? $user->state_code }}
+                                </span>
+                            @else
+                                <button
+                                    type="button"
+                                    wire:click="edit"
+                                    class="btn btn-primary btn-sm"
+                                >
+                                    Add state
+                                </button>
+                            @endif
+                            
+
+                        @endif
+
+                    </x-profile-field>
+        
+                @endif
+
+
+
+
+                <x-profile-field label="Password">
+
+                    <span>••••••••</span>
+
+                </x-profile-field>
+
+            </dl>
+
+
+            {{-- Form buttons --}}
+
+            <div class="mt-10! flex gap-3">
+
+                @if($editing)
+                    <button type="submit" class="btn btn-success w-full">
+                        Save changes
+                    </button>
+
+                    <button
+                        type="button"
+                        wire:click.prevent="cancelEdit"
+                        class="btn btn-danger w-full"
+                    >
+                        Cancel
+                    </button>
+                @else
+                    <button
+                        type="button"
+                        wire:click="edit"
+                        class="btn btn-primary w-full"
+                    >
+                        Edit profile
+                    </button>
+
+                    <button
+                        type="button"
+                        wire:click="editPassword"
+                        class="btn btn-normal w-full"
+                    >
+                        Change Password
+                    </button>
+                @endif
+            
+            </div>
+
+
+        </form>
     
 
 
@@ -155,24 +310,11 @@
 
 
 
-        {{-- Form buttons --}}
-        <div class="mt-10! flex gap-3">
+        
+    </x-cards.form>
 
-            <a
-                href="/profile/edit"
-                class="btn"
-            >
-                Edit Profile
-            </a>
 
-            <a
-                href="/profile/password"
-                class="btn"
-            >
-                Change Password
-            </a>
-
-        </div>
+</div>
 
 
 
@@ -180,10 +322,3 @@
 
 
 
-
-
-
-
-
-
-</x-layout.template>

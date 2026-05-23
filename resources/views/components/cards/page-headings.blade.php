@@ -1,9 +1,18 @@
+{{-- resources/views/auth/verify-new-email.blade.php --}}
+
 <div class="page-headings-card">
-    @unless(empty($pageHeadings[0]))
-        <h1>{!!$pageHeadings[0]!!}</h1>
-    @endunless
-    @unless(empty($pageHeadings[1]))
-        <h2>{!!$pageHeadings[1]!!}</h2>
-    @endunless
+
+    @isset($pageHeadings[0])
+        <h1 class="page-heading">
+            {!!$pageHeadings[0]!!}
+        </h1>
+    @endisset
+
+    @isset($pageHeadings[1])
+        <p class="page-subheading">
+            {!!$pageHeadings[1]!!}
+        </p>
+    @endisset
+
 </div>
 

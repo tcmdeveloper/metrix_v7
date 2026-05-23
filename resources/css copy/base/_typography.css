@@ -1,0 +1,117 @@
+/* -----------------------------------------------------
+// BODY
+// ---------------------------------------------------*/
+
+
+body{
+
+    @apply 
+        font-roboto-slab
+    ;
+    
+}
+
+
+
+
+/* -----------------------------------------------------
+// HEADINGS
+// ---------------------------------------------------*/
+
+
+h1{
+
+    @apply
+        py-3
+        text-5xl
+        text-center
+        font-black
+        font-roboto-slab
+    ;
+
+}
+
+
+h2{
+
+    @apply 
+        py-3
+        text-3xl
+        text-center
+        font-thin
+    ;
+
+}
+
+
+h3{
+
+    @apply 
+        mb-8
+        text-2xl
+        font-bold
+        font-roboto-slab
+        leading-8
+        tracking-tight
+    ;
+
+}
+
+
+
+
+/* -----------------------------------------------------
+// TEXT ELEMENTS
+// ---------------------------------------------------*/
+
+.link {
+    @apply
+        text-blue-600
+        underline
+        underline-offset-2
+        decoration-transparent
+        transition-all
+        duration-200
+        hover:text-blue-700
+        hover:decoration-current
+        focus:outline-none
+        focus:ring-2
+        focus:ring-blue-200
+        rounded-sm;
+}
+
+p{
+    
+    @apply
+        mb-3
+    ;
+
+}
+
+
+
+
+
+/* -----------------------------------------------------
+// ANIMATIONS
+// ---------------------------------------------------*/
+
+
+@utility hover-dip{
+
+    @apply 
+        animation-300
+        hover:translate-y-1
+    ;
+
+}
+
+
+@utility hover-red{
+
+    @apply 
+        animation-300
+        hover:text-red-500
+    ;
+
+}

@@ -61,6 +61,75 @@
 
                         </div>
                     </a>
+
+                    {{-- Navbar Profile Dropdown --}}
+                    <div
+                        x-data="{ open: false }"
+                        class="relative"
+                    >
+
+                        {{-- Profile Button --}}
+                        <button
+                            @click="open = !open"
+                            class="flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-gray-100"
+                        >
+                            <img
+                                src="{{ auth()->user()->avatar_url }}"
+                                alt="Profile"
+                                class="h-8 w-8 rounded-full object-cover"
+                            >
+
+                            <span class="text-sm font-medium">
+                                {{ auth()->user()->name }}
+                            </span>
+
+                            <svg
+                                class="h-4 w-4 transition"
+                                :class="{ 'rotate-180': open }"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M19 9l-7 7-7-7"
+                                />
+                            </svg>
+                        </button>
+
+                        {{-- Dropdown --}}
+                        <div
+                            x-show="open"
+                            @click.away="open = false"
+                            x-transition
+                            class="absolute right-0 z-50 mt-2 w-56 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg"
+                        >
+
+                            <a
+                                href="{{ route( 'profile.show' ) }}"
+                                class="block px-4 py-3 text-sm hover:bg-gray-50"
+                            >
+                                Your Profile
+                            </a>
+
+                            <div class="border-t border-gray-100"></div>
+
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <button
+                                    type="submit"
+                                    class="block w-full px-4 py-3 text-left text-sm hover:bg-gray-50"
+                                >
+                                    Logout
+                                </button>
+                            </form>
+
+                        </div>
+
+                    </div>
                 @endauth
 
                 <a

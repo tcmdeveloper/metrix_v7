@@ -1,94 +1,113 @@
+{{-- resources/views/auth/forgot-password.blade.php --}}
+
+
 <x-layout.template :page-headings="$pageHeadings">
 
 
+    <x-cards.form class="auth-card">
 
-    @if (session('status.type') === 'success')
 
-        <x-cards.form class="card access-card">
-            <a href="{{ route('home') }}" class="btn hover:text-white!">
+        @if (session('status.type') === 'success')
+  
+            <a 
+                href="{{ route('home') }}" 
+                class="btn-primary w-full">
                 Back to homepage
             </a>
-        </x-cards.form>
 
-    @else
-    
-        {{-- Open form-card component --}}
+        @else
 
-        <x-cards.form class="card access-card" novalidate>
+            <x-autofocus-errors field="email" route="password.request">
 
-
-            {{-- Forgot password form (default hidden) --}}
-
-            <div
-                x-data="{
-                    open: @js(request()->routeIs('password.request')),
-                    showForm() {
-                        this.open = true
-                        this.$nextTick(() => {
-                            this.$refs.email?.focus()
-                        })
-                    }
-                }"
-                x-init="
-                    if (open) {
-                        $nextTick(() => {
-
-                            $refs.email?.focus();
-
-                            const length = $refs.email.value.length;
-
-                            $refs.email.setSelectionRange(length, length);
-
-                        })
-                    }
-                "
-                
-            >
-
-                <form 
+                <form
                     action="{{ route('password.email') }}"
                     method="POST"
-                    x-show="open"
-                    x-transition
                     novalidate
+                    class="space-y-4"
                 >
 
                     @csrf
 
-
+        
                     {{-- Email --}}
-                    
+
                     <div class="form-field">
+
+                        <label
+                            for="email"
+                            class="sr-only"
+                        >
+                            Email address
+                        </label>
+
                         <input
                             x-ref="email"
-                            type="email"
+                            id="email"
+                            type="text"
+                            inputmode="email"
                             name="email"
                             placeholder="Email address"
-                            value="{{ old('email') }}"
+                            value="{{ old('email', session('login_email')) }}"
+                            @class([
+                                'input', 
+                                'input-error' => $errors->has('email')
+                            ])
                         >
+
+                        @error('email')
+                            <p class="form-error">
+                                {{ $message }}
+                            </p>
+                        @enderror
+
                     </div>
 
 
+                    {{-- Submit button --}}
 
-                    <!-- Form Buttons -->
-                    
                     <div class="form-buttons">
-                        <button type="submit" class="btn">
+
+                        <button 
+                            type="submit" 
+                            class="btn btn-primary w-full"
+                        >
                             Continue
                         </button>
+
                     </div>
 
+
+                    {{-- Links --}}
+
+                    <div class="form-links items-start text-left">
+                        
+                        <a 
+                            href="{{ route('login') }}" 
+                            class="link"
+                        >
+                            Back to login
+                        </a>
+
+                        <a 
+                            href="{{ route('register') }}"
+                            class="link"    
+                        >
+                            Create an account
+                        </a>
+                        
+                    </div>
 
 
                 </form>
 
 
-            </div>
+            </x-autofocus-errors>  
 
 
-        </x-cards.form>
+        @endif
 
-    @endif
+
+    </x-cards.form>
 
 
 </x-layout.template>

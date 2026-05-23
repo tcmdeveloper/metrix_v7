@@ -15,7 +15,7 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\YouTubeController;
-use App\Livewire\Profile\Edit;
+use App\Livewire\Profile;
 use Illuminate\Support\Facades\Route;
 
 
@@ -191,40 +191,15 @@ use Illuminate\Support\Facades\Route;
 
 
 // -----------------------------------------------------
-// USER CONTROLLER
-// -----------------------------------------------------
-
-
-    // GUEST USERS
-
-    Route::controller(UserController::class)->middleware('guest')->group(function(){        
-
-    });
-
-
-    // AUTHENTICATED USERS
-
-    Route::controller(UserController::class)->middleware('auth')->group(function(){
-
-    });
-
-
-
-
-// -----------------------------------------------------
 // PROFILE CONTROLLER
 // -----------------------------------------------------
 
 
     // AUTHENTICATED USERS
 
-    Route::controller(ProfileController::class)->middleware('auth')->group(function(){
-
-        Route::put('/profile', 'update');
-        Route::put('/profile/password', 'password');
-        Route::post('/profile/avatar', 'avatar');
-        Route::get('/profile/edit', Edit::class)->name('profile.edit');
-        Route::get('/profile', 'show')->name('profile.show');
+    Route::middleware('auth')->group(function(){
+        
+        Route::get('/profile', Profile::class)->name('profile.show');
 
     });
     

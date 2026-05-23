@@ -1,111 +1,97 @@
+{{-- resources/views/auth/reset-password.blade.php --}}
+
+
 <x-layout.template :page-headings="$pageHeadings">
 
 
+    <x-cards.form class="auth-card">
 
-    @if(session()->has('success'))
+        <x-autofocus-errors field="password" route="password.reset">
 
-        <div
-            x-data="{ show: true }"
-            x-show="show"
-            x-transition
-            class="alert-success"
-        >
-            {{ session('success') }}
-        </div>
-
-        <x-cards.form class="card access-card">
-            <a href="{{ route('home') }}" class="btn hover:text-white!">
-                Back to homepage
-            </a>
-        </x-cards.form>
-
-    @else
-
-
-        {{-- Open form-card component --}}
-
-        <x-cards.form class="card access-card">
-
-
-            {{-- Reset password form --}}
-
-            <div
-                x-data="{
-                    open: @js(request()->routeIs('reset.password')),
-                    showForm() {
-                        this.open = true
-                        this.$nextTick(() => {
-                            this.$refs.email?.focus()
-                        })
-                    }
-                }"
-                x-init="
-                    if (open) {
-                        $nextTick(() => $refs.email?.focus())
-                    }
-                "
+            <form
+                action="{{ route('password.update') }}"
+                method="POST"
+                novalidate
+                class="space-y-4"
             >
 
+                @csrf
 
-            <div
-                x-data="{ open: true }"
-                x-init="
-                    if (open) {
-                        $nextTick(() => $refs.email?.focus())
-                    }
-                "
-            >
+                <input type="hidden" name="token" value="{{ $token }}">
+                <input type="hidden" name="email" value="{{ $email }}">
 
-                <form 
-                    action="{{ route('password.update') }}"
-                    method="POST"
-                    x-show="open"
-                    x-transition
-                    novalidate
-                >
+                {{-- Password --}}
 
-                    @csrf
+                <div class="form-field">
 
-                    <input type="hidden" name="token" value="{{ $token }}">
-                    <input type="hidden" name="email" value="{{ $email }}">
+                    <label
+                        for="password"
+                        class="sr-only"
+                    >
+                        Password
+                    </label>
 
-                    <div class="form-field">
-                        <label for="email">New password</label>
+                    <input
+                        x-ref="password"
+                        id="password"
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        @class([
+                            'input',
+                            'input-error' => $errors->has('password') || $errors->has('credentials')
+                        ])
+                    >
 
-                        <input
-                            x-ref="password"
-                            type="password"
-                            name="password"
-                            id="password"
-                        >
+                    @error('password')
+                        <p class="form-error">{{ $message }}</p>
+                    @enderror
 
-                    </div>
+                    @error('credentials')
+                        <p class="form-error">{{ $message }}</p>
+                    @enderror
 
-                    <div class="form-field">
-                        <label for="email">Confirm new password</label>
-
-                        <input
-                            type="password"
-                            name="password_confirmation"
-                            id="password_confirmation"
-                        >
-
-                    </div>
+                </div>
 
 
+                {{-- Confirm password --}}
 
-                    <div class="form-buttons mt-4">
-                        <button type="submit" class="btn">
-                            Save new password
-                        </button>
-                    </div>
-                </form>
+                <div class="form-field">
 
-            </div>
+                    <label
+                        for="password_confirmation"
+                        class="sr-only"
+                    >
+                        Confirm password
+                    </label>
+
+                    <input
+                        x-ref="password_confirmation"
+                        id="password_confirmation"
+                        type="password"
+                        name="password_confirmation"
+                        placeholder="Confirm password"
+                        @class([
+                            'input',
+                            'input-error' => $errors->has('password') || $errors->has('credentials')
+                        ])
+                    >
+
+                </div>
+
+
+
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-primary w-full">
+                        Save new password
+                    </button>
+                </div>
+
+            </form>
+
+            </x-autofocus-errors>
 
         </x-cards.form>
         
-    @endif
-
 </x-layout.template>
 

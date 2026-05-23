@@ -1,7 +1,8 @@
 
 <button
     type="button"
-    class="
+    class="btn btn-neutral w-full"
+    {{-- class="
         group
         flex w-full items-center justify-center gap-3
         border border-zinc-300 bg-white
@@ -12,7 +13,7 @@
         hover:bg-zinc-50 hover:shadow hover:cursor-pointer
         active:scale-[0.98]
         
-    "
+    " --}}
 >
     <svg
         class="h-5 w-5"

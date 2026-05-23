@@ -1,0 +1,44 @@
+/* resources/css/utilities/_animations.css */
+
+/* -----------------------------------------------------
+// IMPORTS
+// ---------------------------------------------------*/
+
+@utility animation{
+    @apply 
+        transition-all
+        ease-out
+    ;
+}
+
+@utility animation-150{
+    @apply
+        animation
+        duration-150
+    ;
+}
+
+@utility animation-300{
+    @apply
+        animation
+        duration-300
+    ;  
+}
+
+@utility hover-dip{
+
+    @apply 
+        animation-300
+        hover:translate-y-1
+    ;
+
+}
+
+@utility hover-red{
+
+    @apply 
+        animation-300
+        hover:text-red-500
+    ;
+
+}

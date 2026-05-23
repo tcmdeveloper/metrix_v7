@@ -34,7 +34,7 @@
         x-init="
             $nextTick(() => {
                 show = true;
-                setTimeout(() => show = false, 4000);
+                {{-- setTimeout(() => show = false, 4000); --}}
             })
         "
         x-show="show"

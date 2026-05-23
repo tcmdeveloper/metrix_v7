@@ -1,11 +1,38 @@
+/* -----------------------------------------------------
+// PAGE HEADINGS
+// ---------------------------------------------------*/
+
 .page-headings-card{
 
     @apply py-8;
+
+    h1{
+        @apply
+            py-3
+            text-5xl
+            text-center
+            font-black
+            font-roboto-slab
+        ;
+    }
+
+    p{
+        @apply 
+            py-3
+            text-3xl
+            text-center
+            font-thin
+        ;
+    }
 
 }
 
 
 
+
+/* -----------------------------------------------------
+// CARD
+// ---------------------------------------------------*/
 
 .card{
 
@@ -23,19 +50,78 @@
 }
 
 
-.card-divider{
-    @apply my-6 border-t border-stone-300;
+
+
+/* -----------------------------------------------------
+// AUTH CARD
+// ---------------------------------------------------*/
+
+.auth-card{
+
+    @apply 
+        bg-slate-100 
+        border-slate-200
+    ;
+
 }
 
 
-.access-card{
-    @apply bg-slate-100! border-slate-200!;
+
+
+/* -----------------------------------------------------
+// FORM CARD
+// ---------------------------------------------------*/
+
+.form-card{
+
+
+
+
+    
+
+
+    p.form-error{
+
+        @apply 
+            text-red-700
+            text-xs
+            font-normal
+            my-0
+        ;
+
+    }
+
+
+    .form-links{
+
+        @apply 
+            flex flex-col
+            mt-8
+            font-light text-gray-600
+        ;
+
+        span{
+            @apply font-normal;
+        }
+
+        a{
+            @apply 
+                inline-flex items-center
+            ;
+        }
+
+    }
+
 }
 
 
 
 
- .profile-card{
+/* -----------------------------------------------------
+// PROFILE CARD
+// ---------------------------------------------------*/
+
+.profile-card{
 
     .header{
         @apply 
@@ -45,20 +131,33 @@
         ;
     }
 
-    ul.details-list{
-        @apply flex flex-col my-6;
+    
+    
 
-        li{
-            @apply flex justify-between items-center border-t border-stone-200 py-5;
-        }
-
-        li:last-child {
-            @apply border-b;
-        }
-        
-    }
+    
 
  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -80,17 +179,13 @@
 
     form{
 
-        @apply grid;
-        @apply grid-cols-2;
-        @apply gap-0;
-
 
         .form-field,
         .form-buttons{
 
             @apply 
-                col-span-2
-                mb-6
+  
+                mb-4
                 w-full
                 flex
                 flex-col
@@ -102,7 +197,8 @@
 
         .form-buttons{
 
-            @apply my-2;
+            @apply my-2!;
+            @apply mt-6!;
             @apply flex-row;
             @apply justify-center;
             @apply items-center;
@@ -110,26 +206,7 @@
         }
 
 
-        .form-links{
-            
-            @apply 
-                font-light
-                text-stone-500
-                flex
-                justify-center
-                mt-6
-                bg-transparent
-            ;
-
-            span{
-
-                a.blue-link{
-                    @apply text-blue-500 underline hover:no-underline;
-                }
-
-            }
-
-        }
+        
 
 
         label{
@@ -141,30 +218,7 @@
         }
 
 
-        input[type=text],
-        input[type=email],
-        input[type=password],
-        textarea,
-        select{
-
-            @apply 
-                p-2
-                px-4
-
-                border
-                border-stone-300
-                outline-slate-400
-
-                text-lg
-                text-stone-800
-
-                bg-white
-
-                focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-100
-
-            ;
-
-        }
+        
 
 
         input::placeholder,
@@ -176,17 +230,7 @@
         }
 
 
-        span.form-error{
-
-            @apply block;
-
-            @apply text-xs;
-            @apply text-red-500;
-            @apply font-bold;
-            @apply font-roboto;            
-
-        }
-
+        
         
 
 
